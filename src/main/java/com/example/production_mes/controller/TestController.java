@@ -1,5 +1,5 @@
 package com.example.production_mes.controller;
- 
+
 import com.example.production_mes.pojo.sys_log;
 import com.example.production_mes.service.logService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,6 @@ public class TestController {
     public String alllog(Model model){
         List<sys_log> loglist = logserv.selectAllLogs();
         model.addAttribute("alllog",loglist);
-        return "alllog";
+        return "allLog";
     }
 }
