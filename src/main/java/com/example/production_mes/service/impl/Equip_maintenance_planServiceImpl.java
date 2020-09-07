@@ -24,4 +24,9 @@ public class Equip_maintenance_planServiceImpl implements Equip_maintenance_plan
     public equip_maintenance_plan byid(String id) {
         return equip_maintenance_planMapper.byidequip_maintenance_plan(id);
     }
+
+    @Override
+    public void add(equip_maintenance_plan equip_maintenance_p) {
+        equip_maintenance_planMapper.add(equip_maintenance_p);
+    }
 }

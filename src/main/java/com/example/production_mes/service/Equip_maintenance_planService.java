@@ -11,4 +11,6 @@ public interface Equip_maintenance_planService {
 
     List<equip_maintenance_plan> all();
     equip_maintenance_plan byid(String id);
+
+    void add(equip_maintenance_plan equip_maintenance_p);
 }
