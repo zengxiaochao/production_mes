@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class Bas_codeprinterServiceImpl {
+public class Bas_codeprinterServiceImpl implements com.example.production_mes.service.Bas_codeprinterService {
 
 
 
@@ -14,9 +14,11 @@ public class Bas_codeprinterServiceImpl {
     @Autowired
     private Bas_codeprinterMapper bas_codeprinterMapper;
 
+    @Override
     public List<bas_codeprinter> all() {
         return bas_codeprinterMapper.all();
     }
+    @Override
     public bas_codeprinter byid(String id) {
         return bas_codeprinterMapper.byid(id);
     }

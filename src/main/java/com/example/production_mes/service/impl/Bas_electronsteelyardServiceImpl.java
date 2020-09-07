@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class Bas_electronsteelyardServiceImpl {
+public class Bas_electronsteelyardServiceImpl implements com.example.production_mes.service.Bas_electronsteelyardService {
 
 
 
@@ -14,9 +14,11 @@ public class Bas_electronsteelyardServiceImpl {
     @Autowired
     private Bas_electronsteelyardMapper bas_electronsteelyardMapper;
 
+    @Override
     public List<bas_electronsteelyard> all() {
         return bas_electronsteelyardMapper.all();
     }
+    @Override
     public bas_electronsteelyard byid(String id) {
         return bas_electronsteelyardMapper.byid(id);
     }
