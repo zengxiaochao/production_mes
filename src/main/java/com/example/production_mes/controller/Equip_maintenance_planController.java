@@ -2,6 +2,7 @@ package com.example.production_mes.controller;
 
 import com.example.production_mes.pojo.equip_maintenance_plan;
 import com.example.production_mes.service.Equip_maintenance_planService;
+import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,7 +53,6 @@ public class Equip_maintenance_planController {
     @RequestMapping("/add")
     public String add(
             Model model,
-            @RequestParam("id")String id,
             @RequestParam("equip_type")String equip_type,
             @RequestParam("maintenance")String maintenance,
             @RequestParam("cycle")String cycle,
@@ -62,13 +62,14 @@ public class Equip_maintenance_planController {
             @RequestParam("del_flag")String del_flag,
             @RequestParam("remarks")String remarks,
             @RequestParam("create_by")String create_by,
-            @RequestParam("update_by")String update_by,
-            @RequestParam("create_date")String create_date,
-            @RequestParam("update_date")String update_date
+            @RequestParam("update_by")String update_by
+//            @RequestParam("create_date")String create_date,
+//            @RequestParam("update_date")String update_date
     ){
 
         equip_maintenance_plan equip_maintenance_p = new equip_maintenance_plan();
-        equip_maintenance_p.setId(id);
+//        equip_maintenance_p.setId(id);
+        equip_maintenance_p.setId(String.valueOf(IDGenerator.generateID()));
         equip_maintenance_p.setCycle(cycle);
         equip_maintenance_p.setRemarks(remarks);
         equip_maintenance_p.setUser_id(user_id);

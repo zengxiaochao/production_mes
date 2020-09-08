@@ -9,4 +9,6 @@ public interface Equip_repairService {
 
     List<equip_repair> all();
     equip_repair byid(String id);
+
+    String add(equip_repair equip_r);
 }

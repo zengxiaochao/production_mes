@@ -24,4 +24,10 @@ public class Equip_repairServiceImpl implements Equip_repairService {
     public equip_repair byid(String id) {
         return equip_repairMapper.equip_repairbyid(id);
     }
+
+    @Override
+    public String add(equip_repair equip_r) {
+        equip_repairMapper.add(equip_r);
+        return null;
+    }
 }

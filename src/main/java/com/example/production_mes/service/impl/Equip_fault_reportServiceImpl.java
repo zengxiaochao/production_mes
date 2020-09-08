@@ -24,4 +24,9 @@ public class Equip_fault_reportServiceImpl implements Equip_fault_reportService 
     public equip_fault_report byid(String id) {
         return equip_fault_reportMapper.equip_fault_reportbyid(id);
     }
+
+    @Override
+    public void add(equip_fault_report equip_fault_r) {
+        equip_fault_reportMapper.add(equip_fault_r);
+    }
 }
