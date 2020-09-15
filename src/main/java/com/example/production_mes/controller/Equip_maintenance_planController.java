@@ -33,10 +33,10 @@ public class Equip_maintenance_planController {
     * */
     @RequestMapping("/all")
     @ResponseBody
-    public String all(Model model){
+    public List<equip_maintenance_plan> all(Model model){
         List<equip_maintenance_plan> equip_maintenance_planList = equip_maintenance_planService.all();
         model.addAttribute("allequip_maintenance_plan", equip_maintenance_planList);
-        return equip_maintenance_planList.toString();
+        return equip_maintenance_planList;
     }
     /*
     * 通过ID进行查询

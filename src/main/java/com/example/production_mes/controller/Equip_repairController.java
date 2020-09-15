@@ -32,10 +32,10 @@ public class Equip_repairController {
      * */
     @RequestMapping("/all")
     @ResponseBody
-    public String all(Model model){
+    public List<equip_repair> all(Model model){
         List<equip_repair> equip_repairList = equip_repairService.all();
         model.addAttribute("all_Equip_repairList", equip_repairList);
-        return equip_repairList.toString();
+        return equip_repairList;
     }
     /*
      * 通过ID进行查询

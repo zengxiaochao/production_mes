@@ -33,10 +33,10 @@ public class Equip_fault_reportController {
      * */
     @RequestMapping("/all")
     @ResponseBody
-    public String all(Model model){
+    public List<equip_fault_report> all(Model model){
         List<equip_fault_report> equip_fault_reportList = equip_fault_reportService.all();
         model.addAttribute("allequip_fault_report", equip_fault_reportList);
-        return equip_fault_reportList.toString();
+        return equip_fault_reportList;
     }
     /*
      * 通过ID进行查询
@@ -97,8 +97,13 @@ public class Equip_fault_reportController {
 
 
 
+
+
+
+
+
     /**
-     * 更新维修记录
+     * 更新维修记录 
      */
 
 }

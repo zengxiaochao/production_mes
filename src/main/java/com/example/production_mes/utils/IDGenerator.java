@@ -139,6 +139,7 @@ public class IDGenerator
 //	 for(int i = 0;i<30;i++){
 //		  System.out.println(IDGenerator.generateUUID());
 //		 }
+		
 		for(int i = 0;i<30;i++){
 //			System.out.println(IDGenerator.generateIDByDateStr());
 			System.out.println(IDGenerator.generateID());
