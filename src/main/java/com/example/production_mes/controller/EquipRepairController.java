@@ -4,9 +4,11 @@ import com.example.production_mes.entity.EquipRepair;
 import com.example.production_mes.service.EquipRepairService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (EquipRepair)表控制层
@@ -30,8 +32,17 @@ public class EquipRepairController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
+
     public EquipRepair selectOne(String id) {
         return this.equipRepairService.queryById(id);
     }
+
+
+
+    @GetMapping("selectAll")
+    public List<EquipRepair> selectAll() {
+        return this.equipRepairService.queryAllByLimit(0,10);
+    }
+
 
 }

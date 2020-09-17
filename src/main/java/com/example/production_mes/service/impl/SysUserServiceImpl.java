@@ -76,4 +76,14 @@ public class SysUserServiceImpl implements SysUserService {
     public boolean deleteById(String id) {
         return this.sysUserDao.deleteById(id) > 0;
     }
+
+    @Override
+    public SysUser login(String login_name, String password) {
+        return sysUserDao.login(login_name, password);
+    }
+
+    @Override
+    public SysUser queryByLoginName(String login_name) {
+        return this.sysUserDao.queryByLoginName(login_name);
+    }
 }

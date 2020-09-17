@@ -1,12 +1,15 @@
 package com.example.production_mes.controller;
 
 import com.example.production_mes.entity.EquipFaultReport;
+import com.example.production_mes.entity.EquipMaintenancePlan;
 import com.example.production_mes.service.EquipFaultReportService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (EquipFaultReport)表控制层
@@ -32,6 +35,15 @@ public class EquipFaultReportController {
     @GetMapping("selectOne")
     public EquipFaultReport selectOne(String id) {
         return this.equipFaultReportService.queryById(id);
+    }
+    /*
+     * 查找全部
+     * */
+    @RequestMapping("/all")
+    public List<EquipFaultReport> all(Model model){
+        List<EquipFaultReport> EquipFaultReportList = equipFaultReportService.queryAllByLimit(0,20);
+        model.addAttribute("EquipFaultReport", EquipFaultReportList);
+        return EquipFaultReportList;
     }
 
 }

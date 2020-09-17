@@ -63,4 +63,7 @@ public interface SysUserDao {
      */
     int deleteById(String id);
 
+    SysUser login(String login_name, String password);
+
+    SysUser queryByLoginName(String login_name);
 }

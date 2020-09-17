@@ -1,12 +1,15 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.dto.LoginDto;
+import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.SysUser;
 import com.example.production_mes.service.SysUserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.example.production_mes.utils.Md5Utils.getMd5Code;
 
 /**
  * 用户表(SysUser)表控制层
@@ -34,4 +37,25 @@ public class SysUserController {
         return this.sysUserService.queryById(id);
     }
 
+    /**
+     * 登陆
+     * @param loginDto
+     * @param response
+     * @return
+     */
+    @PostMapping("login")
+    public Result login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+
+        SysUser sysUser = sysUserService.queryByLoginName(loginDto.getLogin_name());
+        if (sysUser == null || !sysUser.getPassword().equals(getMd5Code(loginDto.getPassword()))) {
+            return Result.error("账号或密码错误");
+        }
+
+        //根据用户id生成jwt
+//        String jwt = jwtUtils.generateToken(sysUser.getId());
+//        response.setHeader("Authorization", jwt);
+//        response.setHeader("Access-control-Expose-Headers", "Authorization");
+        //返回用户信息
+        return Result.success("登录成功",sysUser);
+    }
 }

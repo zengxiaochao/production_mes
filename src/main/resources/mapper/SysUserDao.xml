@@ -26,6 +26,12 @@
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <!--登陆-->
+    <select id="login" resultMap="SysUserMap">
+        select * from production_mes2.sys_user where login_name = #{login_name} and password = #{password}
+    </select>
+
+
     <!--查询单个-->
     <select id="queryById" resultMap="SysUserMap">
         select
@@ -33,6 +39,17 @@
         from production_mes2.sys_user
         where id = #{id}
     </select>
+
+
+    <!--查询单个-->
+    <select id="queryByLoginName" resultMap="SysUserMap">
+        select
+          id, company_id, office_id, login_name, password, no, name, email, phone, mobile, user_type, photo, login_ip, login_date, login_flag, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.sys_user
+        where login_name = #{login_name}
+    </select>
+
+
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="SysUserMap">
@@ -193,5 +210,9 @@
     <delete id="deleteById">
         delete from production_mes2.sys_user where id = #{id}
     </delete>
+
+
+
+
 
 </mapper>
