@@ -76,4 +76,16 @@ public class EquipFaultReportServiceImpl implements EquipFaultReportService {
     public boolean deleteById(String id) {
         return this.equipFaultReportDao.deleteById(id) > 0;
     }
+
+
+    /**
+     * 查询按钮
+     * @param address
+     * @param name
+     * @return
+     */
+    @Override
+    public List<EquipFaultReport> queryByAddress(String address, String name) {
+        return this.equipFaultReportDao.queryByAddress(address, name);
+    }
 }

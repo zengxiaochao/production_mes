@@ -29,6 +29,19 @@
         where id = #{id}
     </select>
 
+
+    <!--搜索-->
+
+
+    <select id="queryByAddress" resultMap="EquipFaultReportMap">
+        select
+        id, equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time,
+        maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.equip_fault_report
+        where ${address} = #{name}
+    </select>
+
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EquipFaultReportMap">
         select

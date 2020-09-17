@@ -53,4 +53,11 @@ public interface EquipFaultReportService {
      */
     boolean deleteById(String id);
 
+    /**
+     * 查询按钮
+     * @param address
+     * @param name
+     * @return
+     */
+    List<EquipFaultReport> queryByAddress(String address, String name);
 }
