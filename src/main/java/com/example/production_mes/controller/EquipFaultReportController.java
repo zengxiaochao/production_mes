@@ -3,16 +3,15 @@ package com.example.production_mes.controller;
 import com.example.production_mes.entity.EquipFaultReport;
 import com.example.production_mes.entity.EquipMaintenancePlan;
 import com.example.production_mes.service.EquipFaultReportService;
+import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
 import org.apache.ibatis.annotations.Param;
 import com.example.production_mes.dto.Result;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -74,61 +73,54 @@ public class EquipFaultReportController {
         return EquipFaultReportList;
     }
 
-    @RequestMapping("/edit")
-    public Result edit(@RequestBody @Param("id") String id,
-                       @RequestBody @Param("equipId") String equipId,
-                       @RequestBody @Param("equipNo") String equipNo,
-                       @RequestBody @Param("equipType") String equipType,
-                       @RequestBody @Param("equipLoc") String equipLoc,
-                       @RequestBody @Param("faultDesc") String faultDesc,
-                       @RequestBody @Param("status") String status,
-                       @RequestBody @Param("reportPerson") String reportPerson,
-                       @RequestBody @Param("assignTime") String assignTime,
-                       @RequestBody @Param("maintenanceWorker") String maintenanceWorker,
-                       @RequestBody @Param("createBy") String createBy,
-                       @RequestBody @Param("createDate") String createDate,
-                       @RequestBody @Param("updateBy") String updateBy,
-                       @RequestBody @Param("updateDate") String updateDate,
-                       @RequestBody @Param("remarks") String remarks,
-                       @RequestBody @Param("delFlag") String delFlag
+    @RequestMapping(value="/edit")
+    public Result edit(@RequestBody HashMap<String, String> map
                        ) {
         EquipFaultReport equipFaultReport = new EquipFaultReport();
-        equipFaultReport.setId(id);
-        equipFaultReport.setEquipId(equipId);
-        equipFaultReport.setEquipNo(equipNo);
-        equipFaultReport.setEquipType(equipType);
-        equipFaultReport.setEquipLoc(equipLoc);
-        equipFaultReport.setFaultDesc(faultDesc);
-        equipFaultReport.setStatus(status);
-        equipFaultReport.setReportPerson(reportPerson);
-//        equipFaultReport.setAssignTime(assignTime);
-        equipFaultReport.setMaintenanceWorker(maintenanceWorker);
-        equipFaultReport.setCreateBy(createBy);
-//        equipFaultReport.setCreateDate(createDate);
-        equipFaultReport.setUpdateBy(updateBy);
-//        equipFaultReport.setUpdateDate(updateDate);
-        equipFaultReport.setRemarks(remarks);
-        equipFaultReport.setDelFlag(delFlag);
-
-        System.out.println(id);
-        System.out.println(equipId);
-        System.out.println(equipNo);
-        System.out.println(equipType);
-        System.out.println(equipLoc);
-        System.out.println(faultDesc);
-        System.out.println(status);
-        System.out.println(reportPerson);
-        System.out.println(assignTime);
-        System.out.println(maintenanceWorker);
-        System.out.println(createBy);
-        System.out.println(createDate);
-        System.out.println(updateBy);
-        System.out.println(updateDate);
-        System.out.println(remarks);
-        System.out.println(delFlag);
+        equipFaultReport.setId(map.get("id"));
+        equipFaultReport.setEquipId(map.get("equipId"));
+        equipFaultReport.setEquipNo(map.get("equipNo"));
+        equipFaultReport.setEquipType(map.get("equipType"));
+        equipFaultReport.setEquipLoc(map.get("equipLoc"));
+        equipFaultReport.setFaultDesc(map.get("faultDesc"));
+        equipFaultReport.setStatus(map.get("status"));
+        equipFaultReport.setReportPerson(map.get("reportPerson"));
+        equipFaultReport.setMaintenanceWorker(map.get("maintenanceWorker"));
+        equipFaultReport.setRemarks(map.get("remarks"));
+        equipFaultReport.setCreateBy(map.get("createBy"));
+        equipFaultReport.setUpdateBy(map.get("updateBy"));
+        equipFaultReport.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         equipFaultReport = equipFaultReportService.update(equipFaultReport);
-        return Result.success("删除成功");
+        return Result.success("修改成功");
     }
+    @RequestMapping(value="/add")
+    public Result add(@RequestBody HashMap<String, String> map
+    ) {
+        EquipFaultReport equipFaultReport = new EquipFaultReport();
+        equipFaultReport.setId(IDGenerator.generateIDByDateStr());
+        System.out.println(equipFaultReport.getId());
+        equipFaultReport.setEquipId(map.get("equipId"));
+        equipFaultReport.setEquipNo(map.get("equipNo"));
+        equipFaultReport.setEquipType(map.get("equipType"));
+        equipFaultReport.setEquipLoc(map.get("equipLoc"));
+        equipFaultReport.setFaultDesc(map.get("faultDesc"));
+        equipFaultReport.setStatus(map.get("status"));
+        equipFaultReport.setReportPerson(map.get("reportPerson"));
+        equipFaultReport.setMaintenanceWorker(map.get("maintenanceWorker"));
+        equipFaultReport.setRemarks(map.get("remarks"));
+        equipFaultReport.setCreateBy(map.get("createBy"));
+        equipFaultReport.setUpdateBy(map.get("updateBy"));
+        equipFaultReport.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        equipFaultReportService.insert(equipFaultReport);
+        return Result.success("添加成功");
+    }
+    @RequestMapping(value="/edit2",method= RequestMethod.POST)
+    public Result edit2(@ModelAttribute EquipFaultReport equipFaultReport) {
+        System.out.println(equipFaultReport.toString());
+        equipFaultReportService.update(equipFaultReport);
+        return Result.success("修改成功");
+    }
+
 
 
 }

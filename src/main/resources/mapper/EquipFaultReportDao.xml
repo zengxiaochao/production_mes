@@ -110,8 +110,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.equip_fault_report(equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time, maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{equipId}, #{equipNo}, #{equipType}, #{equipLoc}, #{faultDesc}, #{status}, #{reportPerson}, #{assignTime}, #{maintenanceWorker}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.equip_fault_report(id,equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time, maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{equipId}, #{equipNo}, #{equipType}, #{equipLoc}, #{faultDesc}, #{status}, #{reportPerson}, #{assignTime}, #{maintenanceWorker}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

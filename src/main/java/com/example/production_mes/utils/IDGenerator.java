@@ -94,6 +94,9 @@ public class IDGenerator
 	 *
 	 * @return
 	 */
+//	public static String generateStringID(){
+//		return generateID();
+//	}
 	public static long generateID(){
 		IDGenerator idGenerator = new IDGenerator();
 		return (idGenerator.time)+idGenerator.count;
@@ -120,7 +123,7 @@ public class IDGenerator
 	 * @return
 	 */
 	public static String generateIDByDateStr(){
-		return (generateID()+"").replace(nowCalendar.get(Calendar.YEAR)+"", nowCalendar.get(Calendar.YEAR)+"-");
+		return (generateID()+"").replace(nowCalendar.get(Calendar.YEAR)+"", nowCalendar.get(Calendar.YEAR)+"");
 
 
 	}
@@ -134,15 +137,15 @@ public class IDGenerator
 //		  System.out.println((int)IDGenerator. generateLongID());
 //		  System.out.println(IDGenerator. generateLongID());
 //		 }
-//	 
-//	 System.out.println("------------------------------------------------");
-//	 for(int i = 0;i<30;i++){
-//		  System.out.println(IDGenerator.generateUUID());
-//		 }
+
+	 System.out.println("------------------------------------------------");
+	 for(int i = 0;i<30;i++){
+		  System.out.println(IDGenerator.generateIDByDateStr());
+		 }
 		
-		for(int i = 0;i<30;i++){
-//			System.out.println(IDGenerator.generateIDByDateStr());
-			System.out.println(IDGenerator.generateID());
-		}
+//		for(int i = 0;i<30;i++){
+////			System.out.println(IDGenerator.generateIDByDateStr());
+//			System.out.println(IDGenerator.generateID());
+//		}
 	}
 }

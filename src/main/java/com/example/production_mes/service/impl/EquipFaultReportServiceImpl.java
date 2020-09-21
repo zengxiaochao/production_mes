@@ -88,4 +88,5 @@ public class EquipFaultReportServiceImpl implements EquipFaultReportService {
     public List<EquipFaultReport> queryByAddress(String address, String name) {
         return this.equipFaultReportDao.queryByAddress(address, name);
     }
+
 }

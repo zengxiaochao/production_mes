@@ -60,4 +60,6 @@ public interface EquipFaultReportService {
      * @return
      */
     List<EquipFaultReport> queryByAddress(String address, String name);
+
+
 }
