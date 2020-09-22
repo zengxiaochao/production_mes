@@ -11,7 +11,7 @@ public class TimeUtils {
         String Date=temp.format(date);
         return Date;
     }
-    public Date NowTimeN(){
+    public static Date NowTimeN(){
         Date date=new Date();   //这里的时util包下的
         return date;
     }
