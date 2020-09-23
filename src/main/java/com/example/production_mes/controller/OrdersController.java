@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.Orders;
 import com.example.production_mes.service.OrdersService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,5 +34,16 @@ public class OrdersController {
     public Orders selectOne(String id) {
         return this.ordersService.queryById(id);
     }
+
+    @GetMapping("doingNum")
+    public Result doingNum() {
+        return Result.success("进行订单",this.ordersService.doingNum());
+    }
+
+    @GetMapping("doneNum")
+    public Result doneNum() {
+        return Result.success("结束订单",this.ordersService.doneNum());
+    }
+
 
 }

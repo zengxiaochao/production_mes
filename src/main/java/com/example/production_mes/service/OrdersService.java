@@ -53,4 +53,11 @@ public interface OrdersService {
      */
     boolean deleteById(String id);
 
+    /**
+     * 首页查询订单数量
+     * @return
+     */
+    int doingNum();
+    int doneNum();
+
 }

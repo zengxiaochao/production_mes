@@ -28,6 +28,13 @@
         where id = #{id}
     </select>
 
+    <select id="doneNum" resultType="java.lang.Integer">
+        select count(*) from orders WHERE status='0'
+    </select>
+
+    <select id="doingNum" resultType="java.lang.Integer">
+        select count(*) from orders WHERE status='1'
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="OrdersMap">
         select

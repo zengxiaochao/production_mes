@@ -76,4 +76,19 @@ public class OrdersServiceImpl implements OrdersService {
     public boolean deleteById(String id) {
         return this.ordersDao.deleteById(id) > 0;
     }
+
+
+    /**
+     * 首页查询订单
+     * @return
+     */
+    @Override
+    public int doingNum() {
+        return this.ordersDao.doingNum();
+    }
+
+    @Override
+    public int doneNum() {
+        return this.ordersDao.doneNum();
+    }
 }
