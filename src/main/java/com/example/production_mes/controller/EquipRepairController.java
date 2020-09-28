@@ -32,7 +32,6 @@ public class EquipRepairController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-
     public EquipRepair selectOne(String id) {
         return this.equipRepairService.queryById(id);
     }
