@@ -77,4 +77,14 @@ public class EquipRepairServiceImpl implements EquipRepairService {
     public boolean deleteById(String id) {
         return this.equipRepairDao.deleteById(id) > 0;
     }
+
+    /**
+     * 查找维修报告
+     * @param mid
+     * @return
+     */
+    @Override
+    public EquipRepair selectByMid(String mid) {
+        return this.equipRepairDao.selectByMid(mid);
+    }
 }

@@ -39,6 +39,16 @@ public class EquipRepairController {
         return this.equipRepairService.queryById(id);
     }
 
+    /**
+     * 查询报告
+     * @param mid
+     * @return
+     */
+   @GetMapping("selectByMid")
+    public EquipRepair selectByMid(String mid) {
+        return this.equipRepairService.selectByMid(mid);
+    }
+
 
 
     @GetMapping("selectAll")

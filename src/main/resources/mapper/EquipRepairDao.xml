@@ -24,6 +24,13 @@
         from production_mes2.equip_repair
         where id = #{id}
     </select>
+    <!--通过Mid查询单个-->
+    <select id="selectByMid" resultMap="EquipRepairMap">
+        select
+          id, mid, fault_type, fault_reason, fault_desc, fault_imgs, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.equip_repair
+        where mid = #{mid}
+    </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EquipRepairMap">
