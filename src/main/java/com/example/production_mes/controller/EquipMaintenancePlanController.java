@@ -1,6 +1,7 @@
 package com.example.production_mes.controller;
 
 import com.example.production_mes.entity.EquipMaintenancePlan;
+import com.example.production_mes.entity.EquipReport;
 import com.example.production_mes.service.EquipMaintenancePlanService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
@@ -24,6 +25,12 @@ public class EquipMaintenancePlanController {
      */
     @Resource
     private EquipMaintenancePlanService equipMaintenancePlanService;
+
+
+    @GetMapping("selectAll")
+    public List<EquipMaintenancePlan> selectAll() {
+        return this.equipMaintenancePlanService.queryAllByLimit(0,1000);
+    }
 
     /**
      * 通过主键查询单条数据

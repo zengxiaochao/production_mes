@@ -16,6 +16,7 @@ public class TimeUtils {
         return date;
     }
     public String DateToString(Date d){
+
         SimpleDateFormat temp=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  //这是24时
         String Da=temp.format(d);
         return Da;
