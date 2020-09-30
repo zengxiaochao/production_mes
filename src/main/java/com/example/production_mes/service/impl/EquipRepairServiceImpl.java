@@ -51,6 +51,7 @@ public class EquipRepairServiceImpl implements EquipRepairService {
     @Override
     public EquipRepair insert(EquipRepair equipRepair) {
         this.equipRepairDao.insert(equipRepair);
+        this.equipRepairDao.updateStatus(equipRepair);
         return equipRepair;
     }
 

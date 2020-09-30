@@ -89,4 +89,16 @@ public class EquipFaultReportServiceImpl implements EquipFaultReportService {
         return this.equipFaultReportDao.queryByAddress(address, name);
     }
 
+    /**
+     * 条件查询
+     * @param equip_type
+     * @param equip_loc
+     * @param status
+     * @return
+     */
+    @Override
+    public List<EquipFaultReport> query(String equip_type, String equip_loc, String status) {
+        return this.equipFaultReportDao.query(equip_type,equip_loc,status);
+    }
+
 }

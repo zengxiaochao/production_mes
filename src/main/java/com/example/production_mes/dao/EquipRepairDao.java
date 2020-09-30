@@ -56,6 +56,13 @@ public interface EquipRepairDao {
     int update(EquipRepair equipRepair);
 
     /**
+     * 更改维修状态
+     * @param equipRepair
+     * @return
+     */
+    int updateStatus(EquipRepair equipRepair);
+
+    /**
      * 通过主键删除数据
      *
      * @param id 主键

@@ -30,6 +30,14 @@ public interface EquipMaintenancePlanService {
     List<EquipMaintenancePlan> queryAllByLimit(int offset, int limit);
 
     /**
+     * 条件查询
+     * @param equip_type
+     * @return
+     */
+
+    List<EquipMaintenancePlan> selectByType(String equip_type);
+
+    /**
      * 新增数据
      *
      * @param equipMaintenancePlan 实例对象
@@ -53,4 +61,9 @@ public interface EquipMaintenancePlanService {
      */
     boolean deleteById(String id);
 
+    /**
+     * flag置为1
+     * @param id
+     */
+    void delete(String id);
 }

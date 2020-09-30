@@ -63,4 +63,17 @@ public interface EquipMaintenancePlanDao {
      */
     int deleteById(String id);
 
+    /**
+     * 置1删除
+     * @param id
+     */
+    void delete(String id);
+
+    /**
+     * 条件查询
+     * @param equip_type
+     * @return
+     */
+
+    List<EquipMaintenancePlan> selectByType(String equip_type);
 }

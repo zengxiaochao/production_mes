@@ -29,12 +29,7 @@ public class EquipReportController {
 
     @GetMapping("select")
     public List<EquipReport> select(@Param("type")String type, @Param("spec")String spec, @Param("id")String id) {
-        System.out.println("*****************************************");
-//        String ctype = type;
-//        String cspec = spec;
-        System.out.println(type);
-        System.out.println(spec);
-        System.out.println(id);
+
 //        if(type.equals("电子秤"))
 //            ctype="0001";
 //        else if(type.equals("读卡器"))

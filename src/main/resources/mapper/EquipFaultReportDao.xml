@@ -31,14 +31,30 @@
 
 
     <!--搜索-->
-
-
     <select id="queryByAddress" resultMap="EquipFaultReportMap">
         select
         id, equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time,
         maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag
         from production_mes2.equip_fault_report
         where ${address} = #{name}
+    </select>
+    <!--条件查询-->
+    <select id="query" resultMap="EquipFaultReportMap">
+        select
+        id, equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time,
+        maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.equip_fault_report
+        <where>
+            <if test="equip_type != null and equip_type != ''">
+                and equip_type = #{equip_type}
+            </if>
+            <if test="equip_loc != null and equip_loc != ''">
+                and equip_loc = #{equip_loc}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+        </where>
     </select>
 
 

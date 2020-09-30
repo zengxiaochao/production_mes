@@ -71,4 +71,13 @@ public interface EquipFaultReportDao {
      * @return
      */
     List<EquipFaultReport> queryByAddress(String address, String name);
+
+    /**
+     * 条件查询
+     * @param equip_type
+     * @param equip_loc
+     * @param status
+     * @return
+     */
+    List<EquipFaultReport> query(String equip_type, String equip_loc, String status);
 }
