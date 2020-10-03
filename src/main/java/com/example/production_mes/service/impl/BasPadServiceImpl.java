@@ -76,4 +76,14 @@ public class BasPadServiceImpl implements BasPadService {
     public boolean deleteById(String id) {
         return this.basPadDao.deleteById(id) > 0;
     }
+
+    @Override
+    public void delete(String id) {
+        this.basPadDao.delete(id);
+    }
+
+    @Override
+    public List<BasPad> query(String type, String spec, String id) {
+        return basPadDao.query(type,spec,id);
+    }
 }

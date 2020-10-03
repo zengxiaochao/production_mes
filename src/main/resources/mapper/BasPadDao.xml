@@ -43,11 +43,59 @@
         where id = #{id}
     </select>
 
+    <!-- 按条件查询   -->
+    <select id="query" resultMap="BasPadMap">
+    select
+    id,
+    qrCode,
+    type,
+    spec,
+    cell_id,
+    station_id,
+    supplier,
+    manufacturer,
+    factoryNumber,
+    purpose,
+    buyDate,
+    person,
+    organization,
+    ip,
+    comBaudrate,
+    comDataseat,
+    comBegin,
+    comEnd,
+    checkMode,
+    sysParam,
+    pADSC,
+    pADNucleus,
+    pADMemory,
+    capacity,
+    del_flag,
+    remarks,
+    create_by,
+    create_date,
+    update_by,
+    update_date
+    from production_mes2.bas_pad
+    <where>
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="type != null and type != ''">
+            and type = #{type}
+        </if>
+        <if test="spec != null and spec != ''">
+            and spec = #{spec}
+        </if>
+    </where>
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasPadMap">
         select
           qrCode, type, spec, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, pADSC, pADNucleus, pADMemory, capacity, create_by, create_date, update_by, update_date, remarks, del_flag, id, cell_id, station_id
         from production_mes2.bas_pad
+        where del_flag='0'
         limit #{offset}, #{limit}
     </select>
 
@@ -154,8 +202,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_pad(qrCode, type, spec, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, pADSC, pADNucleus, pADMemory, capacity, create_by, create_date, update_by, update_date, remarks, del_flag, cell_id, station_id)
-        values (#{qrcode}, #{type}, #{spec}, #{supplier}, #{manufacturer}, #{factorynumber}, #{purpose}, #{buydate}, #{person}, #{organization}, #{ip}, #{combaudrate}, #{comdataseat}, #{combegin}, #{comend}, #{checkmode}, #{sysparam}, #{padsc}, #{padnucleus}, #{padmemory}, #{capacity}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{cellId}, #{stationId})
+        insert into production_mes2.bas_pad(id, qrCode, type, spec, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, pADSC, pADNucleus, pADMemory, capacity, create_by, create_date, update_by, update_date, remarks, del_flag, cell_id, station_id)
+        values (#{id}, #{qrcode}, #{type}, #{spec}, #{supplier}, #{manufacturer}, #{factorynumber}, #{purpose}, #{buydate}, #{person}, #{organization}, #{ip}, #{combaudrate}, #{comdataseat}, #{combegin}, #{comend}, #{checkmode}, #{sysparam}, #{padsc}, #{padnucleus}, #{padmemory}, #{capacity}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{cellId}, #{stationId})
     </insert>
 
     <!--通过主键修改数据-->
@@ -257,5 +305,9 @@
     <delete id="deleteById">
         delete from production_mes2.bas_pad where id = #{id}
     </delete>
+    <!--通过主键假删除-->
+    <update id="delete">
+        update production_mes2.bas_pad set del_flag='1' where id = #{id}
+    </update>
 
 </mapper>
