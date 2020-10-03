@@ -89,8 +89,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_factory(factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{factoryname}, #{factorybuilddate}, #{factoryaddress}, #{factoryphone}, #{factoryecode}, #{factorybuildm}, #{enterpriseId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.bas_factory(id,factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{factoryname}, #{factorybuilddate}, #{factoryaddress}, #{factoryphone}, #{factoryecode}, #{factorybuildm}, #{enterpriseId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

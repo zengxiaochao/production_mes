@@ -77,8 +77,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_workstationinfos(stationName, stationNo, stationMaster, create_by, create_date, update_by, update_date, remarks, del_flag, line_id)
-        values (#{stationname}, #{stationno}, #{stationmaster}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{lineId})
+        insert into production_mes2.bas_workstationinfos(id,stationName, stationNo, stationMaster, create_by, create_date, update_by, update_date, remarks, del_flag, line_id)
+        values (#{id},#{stationname}, #{stationno}, #{stationmaster}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{lineId})
     </insert>
 
     <!--通过主键修改数据-->
