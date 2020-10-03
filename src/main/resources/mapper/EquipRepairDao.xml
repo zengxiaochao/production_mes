@@ -24,6 +24,13 @@
         from production_mes2.equip_repair
         where id = #{id}
     </select>
+    <!--通过Mid查询单个-->
+    <select id="selectByMid" resultMap="EquipRepairMap">
+        select
+          id, mid, fault_type, fault_reason, fault_desc, fault_imgs, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.equip_repair
+        where mid = #{mid}
+    </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EquipRepairMap">
@@ -81,9 +88,17 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.equip_repair(mid, fault_type, fault_reason, fault_desc, fault_imgs, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{mid}, #{faultType}, #{faultReason}, #{faultDesc}, #{faultImgs}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.equip_repair(id,mid, fault_type, fault_reason, fault_desc, fault_imgs, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{mid}, #{faultType}, #{faultReason}, #{faultDesc}, #{faultImgs}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
+
+
+    <!--更改维修状态-->
+    <update id="updateStatus">
+        update production_mes2.equip_fault_report
+        set status = '0003'
+        where id = #{mid}
+    </update>
 
     <!--通过主键修改数据-->
     <update id="update">
@@ -125,6 +140,8 @@
         </set>
         where id = #{id}
     </update>
+
+
 
     <!--通过主键删除-->
     <delete id="deleteById">

@@ -31,7 +31,20 @@
         select
           id, equip_type, maintenance, cycle, warn_time, user_name, user_id, create_by, update_by, create_date, update_date, remarks, del_flag
         from production_mes2.equip_maintenance_plan
+        where del_flag = '0'
         limit #{offset}, #{limit}
+    </select>
+    <!--条件查询-->
+    <select id="selectByType" resultMap="EquipMaintenancePlanMap">
+        select
+          id, equip_type, maintenance, cycle, warn_time, user_name, user_id, create_by, update_by, create_date, update_date, remarks, del_flag
+        from production_mes2.equip_maintenance_plan
+        <where>
+            <if test="equip_type != null and equip_type != ''">
+                and equip_type = #{equip_type}
+            </if>
+            and del_flag = '0'
+        </where>
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -85,8 +98,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.equip_maintenance_plan(equip_type, maintenance, cycle, warn_time, user_name, user_id, create_by, update_by, create_date, update_date, remarks, del_flag)
-        values (#{equipType}, #{maintenance}, #{cycle}, #{warnTime}, #{userName}, #{userId}, #{createBy}, #{updateBy}, #{createDate}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.equip_maintenance_plan(id,equip_type, maintenance, cycle, warn_time, user_name, user_id, create_by, update_by, create_date, update_date, remarks, del_flag)
+        values (#{id},#{equipType}, #{maintenance}, #{cycle}, #{warnTime}, #{userName}, #{userId}, #{createBy}, #{updateBy}, #{createDate}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->
@@ -138,4 +151,8 @@
         delete from production_mes2.equip_maintenance_plan where id = #{id}
     </delete>
 
+    <!--通过主键删除-->
+    <update id="delete">
+        update production_mes2.equip_maintenance_plan set del_flag='1' where id = #{id}
+    </update>
 </mapper>

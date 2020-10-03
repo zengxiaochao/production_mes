@@ -101,8 +101,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_employees(employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date)
-        values (#{employeeno}, #{employeename}, #{workdate}, #{sex}, #{age}, #{telnum}, #{address}, #{email}, #{idcard}, #{officeid}, #{remarks}, #{delFlag}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
+        insert into production_mes2.bas_employees(id, employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date)
+        values (#{id},#{employeeno}, #{employeename}, #{workdate}, #{sex}, #{age}, #{telnum}, #{address}, #{email}, #{idcard}, #{officeid}, #{remarks}, #{delFlag}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
     </insert>
 
     <!--通过主键修改数据-->

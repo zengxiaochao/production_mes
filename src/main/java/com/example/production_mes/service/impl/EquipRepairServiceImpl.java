@@ -51,6 +51,7 @@ public class EquipRepairServiceImpl implements EquipRepairService {
     @Override
     public EquipRepair insert(EquipRepair equipRepair) {
         this.equipRepairDao.insert(equipRepair);
+        this.equipRepairDao.updateStatus(equipRepair);
         return equipRepair;
     }
 
@@ -75,5 +76,15 @@ public class EquipRepairServiceImpl implements EquipRepairService {
     @Override
     public boolean deleteById(String id) {
         return this.equipRepairDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 查找维修报告
+     * @param mid
+     * @return
+     */
+    @Override
+    public EquipRepair selectByMid(String mid) {
+        return this.equipRepairDao.selectByMid(mid);
     }
 }

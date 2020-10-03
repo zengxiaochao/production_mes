@@ -1,14 +1,17 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.dto.Result;
+import com.example.production_mes.entity.EquipFaultReport;
 import com.example.production_mes.entity.EquipRepair;
 import com.example.production_mes.service.EquipRepairService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.production_mes.utils.TimeUtils;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+
+import static com.example.production_mes.utils.IDGenerator.generateIDByDateStr;
 
 /**
  * (EquipRepair)表控制层
@@ -36,11 +39,42 @@ public class EquipRepairController {
         return this.equipRepairService.queryById(id);
     }
 
+    /**
+     * 查询报告
+     * @param mid
+     * @return
+     */
+   @GetMapping("selectByMid")
+    public EquipRepair selectByMid(String mid) {
+        return this.equipRepairService.selectByMid(mid);
+    }
+
 
 
     @GetMapping("selectAll")
     public List<EquipRepair> selectAll() {
         return this.equipRepairService.queryAllByLimit(0,10);
+    }
+    /**
+     * 提交维修报告
+     * @param map
+     * @return
+     */
+    @RequestMapping(value="/add")
+    public Result editReport(@RequestBody HashMap<String, String> map
+    ) {
+        EquipRepair equipRepair = new EquipRepair();
+
+        equipRepair.setId(generateIDByDateStr());
+        equipRepair.setMid(map.get("id"));
+        equipRepair.setFaultType(map.get("faultType"));
+        equipRepair.setDelFlag("0");
+        equipRepair.setFaultReason(map.get("faultReason"));
+        equipRepair.setFaultDesc(map.get("faultDesc"));
+        equipRepair.setCreateBy(map.get("reportPerson"));
+        equipRepair.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        equipRepair = equipRepairService.insert(equipRepair);
+        return Result.success("维修单上传成功");
     }
 
 

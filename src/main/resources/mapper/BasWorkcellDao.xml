@@ -81,8 +81,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_workcell(cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id)
-        values (#{cellname}, #{cellnumber}, #{cellmaster}, #{celldescription}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{stationId})
+        insert into production_mes2.bas_workcell(id, cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id)
+        values (#{id},#{cellname}, #{cellnumber}, #{cellmaster}, #{celldescription}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{stationId})
     </insert>
 
     <!--通过主键修改数据-->

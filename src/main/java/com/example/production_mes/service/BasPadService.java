@@ -53,4 +53,8 @@ public interface BasPadService {
      */
     boolean deleteById(String id);
 
+
+    void delete(String id);
+
+    List<BasPad> query(String type, String spec, String id);
 }

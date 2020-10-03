@@ -81,8 +81,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_line(lineName, lineNumber, lineMaster, lineDescription, workshop_id, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{linename}, #{linenumber}, #{linemaster}, #{linedescription}, #{workshopId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.bas_line(id,lineName, lineNumber, lineMaster, lineDescription, workshop_id, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{linename}, #{linenumber}, #{linemaster}, #{linedescription}, #{workshopId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

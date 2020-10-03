@@ -42,6 +42,11 @@ public class EquipMaintenancePlanServiceImpl implements EquipMaintenancePlanServ
         return this.equipMaintenancePlanDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<EquipMaintenancePlan> selectByType(String equip_type) {
+        return this.equipMaintenancePlanDao.selectByType(equip_type);
+    }
+
     /**
      * 新增数据
      *
@@ -75,5 +80,14 @@ public class EquipMaintenancePlanServiceImpl implements EquipMaintenancePlanServ
     @Override
     public boolean deleteById(String id) {
         return this.equipMaintenancePlanDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 置1删除
+     * @param id
+     */
+    @Override
+    public void delete(String id) {
+        equipMaintenancePlanDao.delete(id);
     }
 }
