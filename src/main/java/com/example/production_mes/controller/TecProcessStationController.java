@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.entity.EquipRepair;
 import com.example.production_mes.entity.TecProcessStation;
 import com.example.production_mes.service.TecProcessStationService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 工序与工站关系(TecProcessStation)表控制层
@@ -32,6 +34,13 @@ public class TecProcessStationController {
     @GetMapping("selectOne")
     public TecProcessStation selectOne(String id) {
         return this.tecProcessStationService.queryById(id);
+    }
+
+
+
+    @GetMapping("selectAll")
+    public List<TecProcessStation> selectAll() {
+        return this.tecProcessStationService.queryAllByLimit(0,100);
     }
 
 }

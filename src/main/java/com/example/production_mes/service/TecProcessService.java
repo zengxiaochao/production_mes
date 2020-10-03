@@ -53,4 +53,5 @@ public interface TecProcessService {
      */
     boolean deleteById(String id);
 
+    void updateById(String id);
 }

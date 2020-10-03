@@ -28,6 +28,7 @@
         select
           id, proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag
         from production_mes2.tec_process
+        where del_flag='1'
         limit #{offset}, #{limit}
     </select>
 
@@ -65,7 +66,7 @@
                 and remarks = #{remarks}
             </if>
             <if test="delFlag != null and delFlag != ''">
-                and del_flag = #{delFlag}
+                and del_flag = '1'
             </if>
         </where>
     </select>
@@ -115,5 +116,17 @@
     <delete id="deleteById">
         delete from production_mes2.tec_process where id = #{id}
     </delete>
+
+    <!--通过主键修改-->
+    <update id="updateById">
+        update production_mes2.tec_process
+        <set>
+        <if test="id != null and id != ''">
+            del_flag = '0',
+        </if>
+        </set>
+        where id = #{id}
+    </update>
+
 
 </mapper>

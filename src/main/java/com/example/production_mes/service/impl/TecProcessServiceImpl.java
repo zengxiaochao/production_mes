@@ -76,4 +76,14 @@ public class TecProcessServiceImpl implements TecProcessService {
     public boolean deleteById(String id) {
         return this.tecProcessDao.deleteById(id) > 0;
     }
+
+    /**
+     * 通过修改flag删除数据
+     * @param id
+     */
+    @Override
+    public void updateById(String id) {
+        this.tecProcessDao.updateById(id);
+        return ;
+    }
 }

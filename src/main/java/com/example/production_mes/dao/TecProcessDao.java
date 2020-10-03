@@ -63,4 +63,9 @@ public interface TecProcessDao {
      */
     int deleteById(String id);
 
+    /**
+     * 通过主键修改数据
+     * @param id
+     */
+    void updateById(String id);
 }

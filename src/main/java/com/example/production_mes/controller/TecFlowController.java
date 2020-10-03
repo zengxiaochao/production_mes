@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.entity.EquipRepair;
 import com.example.production_mes.entity.TecFlow;
 import com.example.production_mes.service.TecFlowService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 工艺路由维护（流程）(TecFlow)表控制层
@@ -32,6 +34,13 @@ public class TecFlowController {
     @GetMapping("selectOne")
     public TecFlow selectOne(String id) {
         return this.tecFlowService.queryById(id);
+    }
+
+
+
+    @GetMapping("selectAll")
+    public List<TecFlow> selectAll() {
+        return this.tecFlowService.queryAllByLimit(0,1000);
     }
 
 }

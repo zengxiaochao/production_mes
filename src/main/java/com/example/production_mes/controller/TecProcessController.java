@@ -1,12 +1,19 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.dto.Result;
+import com.example.production_mes.entity.EquipFaultReport;
+import com.example.production_mes.entity.TecFlow;
 import com.example.production_mes.entity.TecProcess;
 import com.example.production_mes.service.TecProcessService;
+import com.example.production_mes.utils.TimeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * 工艺基础数据维护（工序）(TecProcess)表控制层
@@ -33,5 +40,30 @@ public class TecProcessController {
     public TecProcess selectOne(String id) {
         return this.tecProcessService.queryById(id);
     }
+
+    @GetMapping("selectAll")
+    public List<TecProcess> selectAll() {
+        return this.tecProcessService.queryAllByLimit(0,1000);
+    }
+
+    @GetMapping("deleteById")
+    public Result deleteById(String id) {
+        tecProcessService.updateById(id);
+        return Result.success("删除成功");
+    }
+
+    @RequestMapping(value="/edit")
+    public Result edit(@RequestBody HashMap<String, String> map
+    ) {
+        TecProcess tecProcess = new TecProcess();
+        tecProcess.setProcode(map.get("procode"));
+        tecProcess.setProname(map.get("proname"));
+        tecProcess.setId(map.get("id"));
+        tecProcess.setProdesc(map.get("prodesc"));
+        tecProcess.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        tecProcess = tecProcessService.update(tecProcess);
+        return Result.success("修改成功");
+    }
+
 
 }
