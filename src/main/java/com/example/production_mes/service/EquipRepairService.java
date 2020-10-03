@@ -53,10 +53,6 @@ public interface EquipRepairService {
      */
     boolean deleteById(String id);
 
-    /**
-     * 查找维修报告
-     * @param mid
-     * @return
-     */
     EquipRepair selectByMid(String mid);
+
 }

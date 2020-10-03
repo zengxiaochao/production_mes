@@ -76,4 +76,6 @@ public class BasBomDetailServiceImpl implements BasBomDetailService {
     public boolean deleteById(String id) {
         return this.basBomDetailDao.deleteById(id) > 0;
     }
+
+
 }
