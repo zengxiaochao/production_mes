@@ -83,7 +83,7 @@ public class EquipRepairServiceImpl implements EquipRepairService {
      * @param mid
      * @return
      */
-    @Override
+
     public EquipRepair selectByMid(String mid) {
         return this.equipRepairDao.selectByMid(mid);
     }
