@@ -68,4 +68,12 @@ public interface TecProcessDao {
      * @param id
      */
     void updateById(String id);
+
+
+    /**
+     * 条件查询
+     * @param procode
+     * @return
+     */
+    List<TecProcess> select(String procode);
 }

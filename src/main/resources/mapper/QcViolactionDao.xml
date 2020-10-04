@@ -15,6 +15,8 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
         <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+        <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
+        <result property="procode" column="proCode" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -28,8 +30,18 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="QcViolactionMap">
         select
-          id, station_id, pro_id, userName, violation_des, violation_time, create_by, create_date, update_by, update_date, del_flag, remarks
-        from production_mes2.qc_violaction
+          q.*,s.stationName,p.proCode
+        from production_mes2.bas_workstationinfos s,production_mes2.qc_violaction q,production_mes2.tec_process p
+        where s.id = q.station_id and p.id = q.pro_id and q.del_flag = '1'
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryByName" resultMap="QcViolactionMap">
+        select
+          q.*,s.stationName,p.proCode
+        from production_mes2.bas_workstationinfos s,production_mes2.qc_violaction q,production_mes2.tec_process p
+        where s.id = q.station_id and p.id = q.pro_id and q.del_flag = '1' and s.stationName like "%"#{stationname}"%"
         limit #{offset}, #{limit}
     </select>
 
@@ -81,8 +93,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.qc_violaction(station_id, pro_id, userName, violation_des, violation_time, create_by, create_date, update_by, update_date, del_flag, remarks)
-        values (#{stationId}, #{proId}, #{username}, #{violationDes}, #{violationTime}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{delFlag}, #{remarks})
+        insert into production_mes2.qc_violaction(id,station_id, pro_id, userName, violation_des, violation_time, create_by, create_date, update_by, update_date, del_flag, remarks)
+        values (#{id},#{stationId}, #{proId}, #{username}, #{violationDes}, #{violationTime}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{delFlag}, #{remarks})
     </insert>
 
     <!--通过主键修改数据-->
@@ -131,4 +143,14 @@
         delete from production_mes2.qc_violaction where id = #{id}
     </delete>
 
+    <!--通过主键修改-->
+    <update id="updateById">
+        update production_mes2.qc_violaction
+        <set>
+            <if test="id != null and id != ''">
+                del_flag = '0',
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

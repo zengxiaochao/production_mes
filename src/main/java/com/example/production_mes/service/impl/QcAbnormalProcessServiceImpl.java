@@ -76,4 +76,16 @@ public class QcAbnormalProcessServiceImpl implements QcAbnormalProcessService {
     public boolean deleteById(String id) {
         return this.qcAbnormalProcessDao.deleteById(id) > 0;
     }
+
+    /**
+     * 通过工序名查询所有数据
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @param proname 工序名
+     * @return
+     */
+    @Override
+    public List<QcAbnormalProcess> queryByName(int offset, int limit, String proname) {
+        return this.qcAbnormalProcessDao.queryByName(offset, limit,proname);
+    }
 }

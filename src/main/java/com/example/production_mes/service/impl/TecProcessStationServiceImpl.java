@@ -76,4 +76,27 @@ public class TecProcessStationServiceImpl implements TecProcessStationService {
     public boolean deleteById(String id) {
         return this.tecProcessStationDao.deleteById(id) > 0;
     }
+
+    /**
+     * 通过工序查询所有数据
+     * @param offset 查询起始位置
+     * @param limit  查询条数
+     * @param proname 工序
+     * @return
+     */
+    @Override
+    public List<TecProcessStation> queryByName(int offset, int limit, String proname) {
+        return this.tecProcessStationDao.queryByName(offset, limit,proname);
+    }
+
+    /**
+     * 通过id删除指定数据
+     * @param id
+     * @return
+     */
+    @Override
+    public void updateById(String id) {
+        this.tecProcessStationDao.updateById(id);
+        return ;
+    }
 }

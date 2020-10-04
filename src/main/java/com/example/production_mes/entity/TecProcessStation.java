@@ -25,6 +25,19 @@ public class TecProcessStation implements Serializable {
      * 产线编号
      */
     private String lineId;
+
+    /**
+     * 工序名称
+     */
+    private String proname;
+    /**
+     * 工站名称
+     */
+    private String stationname;
+    /**
+     * 产线名称
+     */
+    private String linename;
     /**
      * 创建者
      */
@@ -131,4 +144,27 @@ public class TecProcessStation implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getProname() {
+        return proname;
+    }
+
+    public void setProname(String proname) {
+        this.proname = proname;
+    }
+
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
+
+    public String getLinename() {
+        return linename;
+    }
+
+    public void setLinename(String linename) {
+        this.linename = linename;
+    }
 }

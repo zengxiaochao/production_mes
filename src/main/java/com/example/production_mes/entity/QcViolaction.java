@@ -20,6 +20,14 @@ public class QcViolaction implements Serializable {
      */
     private String stationId;
     /**
+     * 工站名
+     */
+    private String stationname;
+    /**
+     * 工序编号
+     */
+    private String procode;
+    /**
      * 工序编号
      */
     private String proId;
@@ -157,4 +165,19 @@ public class QcViolaction implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
+
+    public String getProcode() {
+        return procode;
+    }
+
+    public void setProcode(String procode) {
+        this.procode = procode;
+    }
 }

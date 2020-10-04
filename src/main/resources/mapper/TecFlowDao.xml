@@ -29,7 +29,16 @@
         select
           id, flowCode, version, flowName, flowDesc, create_by, create_date, update_by, update_date, remarks, del_flag
         from production_mes2.tec_flow
+        where del_flag='1'
         limit #{offset}, #{limit}
+    </select>
+
+    <!--条件查询-->
+    <select id="select" resultMap="TecFlowMap">
+        select
+          id, flowCode, version, flowName, flowDesc, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.tec_flow
+        where flowCode like "%"#{flowcode}"%"
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -122,5 +131,17 @@
     <delete id="deleteById">
         delete from production_mes2.tec_flow where id = #{id}
     </delete>
+
+    <!--通过主键修改-->
+    <update id="updateById">
+        update production_mes2.tec_flow
+        <set>
+            <if test="id != null and id != ''">
+                del_flag = '0',
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
 
 </mapper>

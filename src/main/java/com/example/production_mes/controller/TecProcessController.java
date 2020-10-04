@@ -15,6 +15,8 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.production_mes.utils.IDGenerator.generateIDByDateStr;
+
 /**
  * 工艺基础数据维护（工序）(TecProcess)表控制层
  *
@@ -46,6 +48,15 @@ public class TecProcessController {
         return this.tecProcessService.queryAllByLimit(0,1000);
     }
 
+    /**
+     * 条件查询
+     * @return
+     */
+    @GetMapping("select")
+    public List<TecProcess> select(String procode) {
+        return this.tecProcessService.select(procode);
+    }
+
     @GetMapping("deleteById")
     public Result deleteById(String id) {
         tecProcessService.updateById(id);
@@ -60,10 +71,26 @@ public class TecProcessController {
         tecProcess.setProname(map.get("proname"));
         tecProcess.setId(map.get("id"));
         tecProcess.setProdesc(map.get("prodesc"));
+        tecProcess.setUpdateBy(map.get("updatePerson"));
         tecProcess.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         tecProcess = tecProcessService.update(tecProcess);
         return Result.success("修改成功");
     }
 
+    @RequestMapping(value="/add")
+    public Result add(@RequestBody HashMap<String, String> map
+    ) {
+        TecProcess tecProcess = new TecProcess();
+        tecProcess.setProcode(map.get("procode"));
+        tecProcess.setProname(map.get("proname"));
+        tecProcess.setProdesc(map.get("prodesc"));
+        tecProcess.setCreateBy(map.get("addPerson"));
+        tecProcess.setUpdateBy(map.get("addPerson"));
+        tecProcess.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        tecProcess.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        tecProcess.setDelFlag("1");
+        tecProcess = tecProcessService.update(tecProcess);
+        return Result.success("修改成功");
+    }
 
 }

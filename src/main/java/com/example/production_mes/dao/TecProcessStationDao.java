@@ -63,4 +63,19 @@ public interface TecProcessStationDao {
      */
     int deleteById(String id);
 
+    /**
+     * 通过工序查询所有数据
+     * @param offset 查询起始位置
+     * @param limit  查询条数
+     * @param proname 工序
+     * @return
+     */
+    List<TecProcessStation> queryByName(int offset, int limit, String proname);
+
+    /**
+     * 通过id删除指定数据
+     * @param id
+     * @return
+     */
+    void updateById(String id);
 }

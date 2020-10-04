@@ -32,6 +32,14 @@
         limit #{offset}, #{limit}
     </select>
 
+    <!--条件查询-->
+    <select id="select" resultMap="TecProcessMap">
+        select
+          id, proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.tec_process
+        where proCode like "%"#{procode}"%"
+    </select>
+
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="TecProcessMap">
         select
@@ -73,8 +81,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.tec_process(proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{procode}, #{proname}, #{prodesc}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.tec_process(id,proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{procode}, #{proname}, #{prodesc}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

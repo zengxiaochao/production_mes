@@ -63,4 +63,18 @@ public interface QcViolactionDao {
      */
     int deleteById(String id);
 
+    /**
+     * 通过工站名查询数据
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @param stationname 工站名
+     * @return 对象列表
+     */
+    List<QcViolaction> queryByName(int offset, int limit,String stationname);
+
+    /**
+     * 通过id删除指定数据
+     * @param id
+     */
+    void updateById(String id);
 }

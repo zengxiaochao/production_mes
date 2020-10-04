@@ -53,4 +53,12 @@ public interface QcAbnormalProcessService {
      */
     boolean deleteById(String id);
 
+    /**
+     * 通过工序名查询所有数据
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @param proname 工序名
+     * @return
+     */
+    List<QcAbnormalProcess> queryByName(int offset, int limit, String proname);
 }

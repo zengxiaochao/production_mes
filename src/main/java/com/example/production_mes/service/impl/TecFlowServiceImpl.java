@@ -2,6 +2,7 @@ package com.example.production_mes.service.impl;
 
 import com.example.production_mes.dao.TecFlowDao;
 import com.example.production_mes.entity.TecFlow;
+import com.example.production_mes.entity.TecProcess;
 import com.example.production_mes.service.TecFlowService;
 import org.springframework.stereotype.Service;
 
@@ -75,5 +76,20 @@ public class TecFlowServiceImpl implements TecFlowService {
     @Override
     public boolean deleteById(String id) {
         return this.tecFlowDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<TecFlow> select(String procode) {
+        return this.tecFlowDao.select(procode);
+    }
+
+    /**
+     * 通过修改flag删除数据
+     * @param id
+     */
+    @Override
+    public void updateById(String id) {
+        this.tecFlowDao.updateById(id);
+        return ;
     }
 }

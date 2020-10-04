@@ -86,4 +86,15 @@ public class TecProcessServiceImpl implements TecProcessService {
         this.tecProcessDao.updateById(id);
         return ;
     }
+
+
+    /**
+     * 条件查询
+     * @param procode
+     * @return
+     */
+    @Override
+    public List<TecProcess> select(String procode) {
+        return this.tecProcessDao.select(procode);
+    }
 }
