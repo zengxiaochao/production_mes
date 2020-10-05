@@ -101,4 +101,10 @@ public class EquipFaultReportServiceImpl implements EquipFaultReportService {
         return this.equipFaultReportDao.query(equip_type,equip_loc,status);
     }
 
+    @Override
+    public List<EquipFaultReport> selectBy(String by) {
+        return this.equipFaultReportDao.selectBy(by);
+
+    }
+
 }

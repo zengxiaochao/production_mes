@@ -37,6 +37,14 @@ public class EquipFaultReportController {
     public List<EquipFaultReport> selectAll() {
         return this.equipFaultReportService.queryAllByLimit(0,1000);
     }
+    /**
+     * 条件查询2
+     * @return
+     */
+    @GetMapping("selectBy")
+    public List<EquipFaultReport> selectBy(String by) {
+        return this.equipFaultReportService.selectBy(by);
+    }
 
     /**
      * 通过主键查询单条数据

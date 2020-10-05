@@ -25,6 +25,11 @@ public class EquipReportController {
         return this.equipReportService.queryAllByLimit(0,1000);
     }
 
+    @GetMapping("selectBy")
+    public List<EquipReport> selectBy(String by) {
+        return this.equipReportService.selectBy(by);
+    }
+
 
 
     @GetMapping("select")

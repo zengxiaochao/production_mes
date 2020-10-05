@@ -78,6 +78,103 @@
                   person
                 from production_mes2.bas_iphoto
     </select>
+    <!--设备台账条件查询-->
+    <select id="selectBy" resultMap="EquipReportMap">
+        select
+                  id,
+                  type,
+                  spec,
+                  supplier,
+                  manufacturer,
+                  factoryNumber,
+                  purpose,
+                  buyDate,
+                  person
+                from production_mes2.bas_pad
+                where
+                    id like "%"#{by}"%"
+                    or type like "%"#{by}"%"
+                    or spec like "%"#{by}"%"
+                    or supplier like "%"#{by}"%"
+                    or purpose like "%"#{by}"%"
+                    or person like "%"#{by}"%"
+        UNION ALL
+        select
+                  id,
+                  type,
+                  spec,
+                  supplier,
+                  manufacturer,
+                  factoryNumber,
+                  purpose,
+                  buyDate,
+                  person
+                from production_mes2.bas_electronsteelyard
+                where
+                    id like "%"#{by}"%"
+                    or type like "%"#{by}"%"
+                    or spec like "%"#{by}"%"
+                    or supplier like "%"#{by}"%"
+                    or purpose like "%"#{by}"%"
+                    or person like "%"#{by}"%"
+        UNION ALL
+        select
+                  id,
+                  type,
+                  spec,
+                  supplier,
+                  manufacturer,
+                  factoryNumber,
+                  purpose,
+                  buyDate,
+                  person
+                from production_mes2.bas_cardreader
+                where
+                    id like "%"#{by}"%"
+                    or type like "%"#{by}"%"
+                    or spec like "%"#{by}"%"
+                    or supplier like "%"#{by}"%"
+                    or purpose like "%"#{by}"%"
+                    or person like "%"#{by}"%"
+        UNION ALL
+        select
+                  id,
+                  type,
+                  spec,
+                  supplier,
+                  manufacturer,
+                  factoryNumber,
+                  purpose,
+                  buyDate,
+                  person
+                from production_mes2.bas_codeprinter
+                where
+                    id like "%"#{by}"%"
+                    or type like "%"#{by}"%"
+                    or spec like "%"#{by}"%"
+                    or supplier like "%"#{by}"%"
+                    or purpose like "%"#{by}"%"
+                    or person like "%"#{by}"%"
+        UNION ALL
+        select
+                  id,
+                  type,
+                  spec,
+                  supplier,
+                  manufacturer,
+                  factoryNumber,
+                  purpose,
+                  buyDate,
+                  person
+                from production_mes2.bas_iphoto
+                where
+                    id like "%"#{by}"%"
+                    or type like "%"#{by}"%"
+                    or spec like "%"#{by}"%"
+                    or supplier like "%"#{by}"%"
+                    or purpose like "%"#{by}"%"
+                    or person like "%"#{by}"%"
+    </select>
 
     <select id="query" resultMap="EquipReportMap">
 

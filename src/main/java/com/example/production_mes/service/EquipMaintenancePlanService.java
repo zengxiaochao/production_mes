@@ -1,6 +1,7 @@
 package com.example.production_mes.service;
 
 import com.example.production_mes.entity.EquipMaintenancePlan;
+import com.example.production_mes.entity.EquipReport;
 
 import java.util.List;
 
@@ -66,4 +67,6 @@ public interface EquipMaintenancePlanService {
      * @param id
      */
     void delete(String id);
+
+    List<EquipMaintenancePlan> selectBy(String by);
 }
