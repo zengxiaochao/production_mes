@@ -24,7 +24,13 @@
         from production_mes2.bas_line
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasLineMap">
+        select
+          q.*
+        from production_mes2.bas_line q
+        where q.lineName like "%"#{linename}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasLineMap">
         select

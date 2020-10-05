@@ -12,6 +12,9 @@
         <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+
+        <result property="cellname" column="cellName" jdbcType="VARCHAR"/>
+        <result property="employeename" column="employeeName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -24,9 +27,19 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasCellEmployeeMap">
-        select
-          id, employee_id, cell_id, remarks, del_flag, create_by, create_date, update_by, update_date
-        from production_mes2.bas_cell_employee
+--         select
+--           id, employee_id, cell_id, remarks, del_flag, create_by, create_date, update_by, update_date
+--         from production_mes2.bas_cell_employee
+--         limit #{offset}, #{limit}
+
+          select
+          id,f.employeeName,p.cellName,remarks
+        from
+        production_mes2.bas_cell_employee pf,
+        production_mes2.bas_employees f,
+        production_mes2.bas_workcell p
+        where f.id = pf.employee_id
+        and p.id = pf.cell_id
         limit #{offset}, #{limit}
     </select>
 

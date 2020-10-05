@@ -76,4 +76,9 @@ public class BasLineServiceImpl implements BasLineService {
     public boolean deleteById(String id) {
         return this.basLineDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasLine> queryByName(int i, int i1, String linename) {
+        return this.basLineDao.queryByName(i, i1,linename);
+    }
 }

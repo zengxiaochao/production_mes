@@ -63,4 +63,5 @@ public interface BasFactoryDao {
      */
     int deleteById(String id);
 
+    List<BasFactory> queryByName(int i, int i1, String factoryname);
 }

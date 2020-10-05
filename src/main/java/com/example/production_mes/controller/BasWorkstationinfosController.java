@@ -118,7 +118,10 @@ public class BasWorkstationinfosController {
         basWorkstationinfosService.update(BasWorkstationinfos);
         return Result.success("修改成功");
     }
-
+    @GetMapping("selectByName")
+    public List<BasWorkstationinfos>  selectByName(String stationname) {
+        return this.basWorkstationinfosService.queryByName(0,1000,stationname);
+    }
 
 
 }

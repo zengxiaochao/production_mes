@@ -53,4 +53,5 @@ public interface BasWorkshopService {
      */
     boolean deleteById(String id);
 
+    List<BasWorkshop> queryByName(int i, int i1, String shopname);
 }

@@ -4,6 +4,7 @@ import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.BasEnterprise;
 import com.example.production_mes.entity.EquipFaultReport;
 import com.example.production_mes.entity.EquipRepair;
+import com.example.production_mes.entity.QcViolaction;
 import com.example.production_mes.service.BasEnterpriseService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
@@ -132,5 +133,8 @@ public class BasEnterpriseController {
     public List<BasEnterprise> selectAll() {
         return this.basEnterpriseService.queryAllByLimit(0,1000);
     }
-
+    @GetMapping("selectByName")
+    public List<BasEnterprise>  selectByName(String stationname) {
+        return this.basEnterpriseService.queryByName(0,1000,stationname);
+    }
 }

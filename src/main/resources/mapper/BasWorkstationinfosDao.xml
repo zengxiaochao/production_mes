@@ -31,7 +31,13 @@
         from production_mes2.bas_workstationinfos
         limit #{offset}, #{limit}
     </select>
-
+    <select id="queryByName" resultMap="BasWorkstationinfosMap">
+        select
+          q.*
+        from production_mes2.bas_workstationinfos q
+        where q.stationName like "%"#{stationname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasWorkstationinfosMap">
         select

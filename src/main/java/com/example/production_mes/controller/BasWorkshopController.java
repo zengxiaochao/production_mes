@@ -117,7 +117,10 @@ public class BasWorkshopController {
         basWorkshopService.update(BasWorkshop);
         return Result.success("修改成功");
     }
-
+    @GetMapping("selectByName")
+    public List<BasWorkshop>  selectByName(String shopname) {
+        return this.basWorkshopService.queryByName(0,1000,shopname);
+    }
 
 
 }

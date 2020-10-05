@@ -76,4 +76,9 @@ public class BasWorkshopServiceImpl implements BasWorkshopService {
     public boolean deleteById(String id) {
         return this.basWorkshopDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasWorkshop> queryByName(int i, int i1, String shopname) {
+        return this.basWorkshopDao.queryByName(i, i1,shopname);
+    }
 }

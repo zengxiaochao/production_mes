@@ -53,4 +53,5 @@ public interface BasWorkcellService {
      */
     boolean deleteById(String id);
 
+    List<BasWorkcell> queryByName(int i, int i1, String cellname);
 }

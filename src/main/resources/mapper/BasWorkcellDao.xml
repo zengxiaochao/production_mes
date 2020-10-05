@@ -24,7 +24,13 @@
         from production_mes2.bas_workcell
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasWorkcellMap">
+        select
+          q.*
+        from production_mes2.bas_workcell q
+        where q.cellName like "%"#{cellname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasWorkcellMap">
         select

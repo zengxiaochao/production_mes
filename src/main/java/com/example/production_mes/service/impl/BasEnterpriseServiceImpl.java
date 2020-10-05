@@ -76,4 +76,9 @@ public class BasEnterpriseServiceImpl implements BasEnterpriseService {
     public boolean deleteById(String id) {
         return this.basEnterpriseDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasEnterprise> queryByName(int i, int i1, String stationname) {
+        return this.basEnterpriseDao.queryByName(i, i1,stationname);
+    }
 }

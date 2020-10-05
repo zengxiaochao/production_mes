@@ -37,6 +37,13 @@
         from production_mes2.bas_enterprise
         limit #{offset}, #{limit}
     </select>
+    <select id="queryByName" resultMap="BasEnterpriseMap">
+        select
+          q.*
+        from production_mes2.bas_enterprise q
+        where q.enterName like "%"#{stationname}"%"
+        limit #{i}, #{i1}
+    </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasEnterpriseMap">

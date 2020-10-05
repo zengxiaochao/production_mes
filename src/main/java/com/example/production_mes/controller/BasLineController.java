@@ -120,6 +120,9 @@ public class BasLineController {
         basLineService.update(BasLine);
         return Result.success("修改成功");
     }
-
+    @GetMapping("selectByName")
+    public List<BasLine>  selectByName(String linename) {
+        return this.basLineService.queryByName(0,1000,linename);
+    }
 
 }

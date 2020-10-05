@@ -26,7 +26,13 @@
         from production_mes2.bas_factory
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasFactoryMap">
+        select
+          q.*
+        from production_mes2.bas_factory q
+        where q.factoryName like "%"#{factoryname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasFactoryMap">
         select

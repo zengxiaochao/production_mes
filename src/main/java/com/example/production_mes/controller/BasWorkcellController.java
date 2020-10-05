@@ -2,6 +2,7 @@ package com.example.production_mes.controller;
 
 import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.BasFactory;
+import com.example.production_mes.entity.BasLine;
 import com.example.production_mes.entity.BasWorkcell;
 import com.example.production_mes.entity.BasWorkshop;
 import com.example.production_mes.service.BasWorkcellService;
@@ -122,4 +123,8 @@ public class BasWorkcellController {
         return Result.success("修改成功");
     }
 
+    @GetMapping("selectByName")
+    public List<BasWorkcell>  selectByName(String cellname) {
+        return this.basWorkcellService.queryByName(0,1000,cellname);
+    }
 }
