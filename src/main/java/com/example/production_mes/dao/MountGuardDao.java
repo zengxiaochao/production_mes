@@ -63,4 +63,5 @@ public interface MountGuardDao {
      */
     int deleteById(String id);
 
+    List<MountGuard> query(String type, String spec, String id);
 }
