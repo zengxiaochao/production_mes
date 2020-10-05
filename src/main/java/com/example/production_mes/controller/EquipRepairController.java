@@ -53,7 +53,7 @@ public class EquipRepairController {
 
     @GetMapping("selectAll")
     public List<EquipRepair> selectAll() {
-        return this.equipRepairService.queryAllByLimit(0,10);
+        return this.equipRepairService.queryAllByLimit(0,1000);
     }
     /**
      * 提交维修报告

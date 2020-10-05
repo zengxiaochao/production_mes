@@ -2,6 +2,7 @@ package com.example.production_mes.controller;
 
 import com.example.production_mes.entity.EquipFaultReport;
 import com.example.production_mes.entity.EquipMaintenancePlan;
+import com.example.production_mes.entity.EquipReport;
 import com.example.production_mes.service.EquipFaultReportService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
@@ -28,6 +29,14 @@ public class EquipFaultReportController {
      */
     @Resource
     private EquipFaultReportService equipFaultReportService;
+    /**
+     * 查找全部
+     * @return
+     */
+    @GetMapping("selectAll")
+    public List<EquipFaultReport> selectAll() {
+        return this.equipFaultReportService.queryAllByLimit(0,1000);
+    }
 
     /**
      * 通过主键查询单条数据
@@ -73,9 +82,26 @@ public class EquipFaultReportController {
         return EquipFaultReportList;
     }
 
+    /**
+     * 条件查询
+     * @param equip_type
+     * @param equip_loc
+     * @param status
+     * @return
+     */
+    @GetMapping("select")
+    public List<EquipFaultReport> select(@Param("equip_type")String equip_type, @Param("equip_loc")String equip_loc, @Param("status")String status) {
+        return this.equipFaultReportService.query(equip_type,equip_loc,status);
+    }
+
+    /**
+     * 派工
+     * @param map
+     * @return
+     */
     @RequestMapping(value="/edit")
     public Result edit(@RequestBody HashMap<String, String> map
-                       ) {
+    ) {
         EquipFaultReport equipFaultReport = new EquipFaultReport();
         equipFaultReport.setId(map.get("id"));
         equipFaultReport.setEquipId(map.get("equipId"));
@@ -83,16 +109,24 @@ public class EquipFaultReportController {
         equipFaultReport.setEquipType(map.get("equipType"));
         equipFaultReport.setEquipLoc(map.get("equipLoc"));
         equipFaultReport.setFaultDesc(map.get("faultDesc"));
-        equipFaultReport.setStatus(map.get("status"));
         equipFaultReport.setReportPerson(map.get("reportPerson"));
         equipFaultReport.setMaintenanceWorker(map.get("maintenanceWorker"));
+        equipFaultReport.setStatus("0002");
+        equipFaultReport.setAssignTime(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        equipFaultReport.setUpdateBy(map.get("reportPerson"));
         equipFaultReport.setRemarks(map.get("remarks"));
         equipFaultReport.setCreateBy(map.get("createBy"));
         equipFaultReport.setUpdateBy(map.get("updateBy"));
         equipFaultReport.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         equipFaultReport = equipFaultReportService.update(equipFaultReport);
-        return Result.success("修改成功");
+        return Result.success("派工成功");
     }
+
+    /**
+     * 报修
+     * @param map
+     * @return
+     */
     @RequestMapping(value="/add")
     public Result add(@RequestBody HashMap<String, String> map
     ) {
@@ -104,8 +138,11 @@ public class EquipFaultReportController {
         equipFaultReport.setEquipType(map.get("equipType"));
         equipFaultReport.setEquipLoc(map.get("equipLoc"));
         equipFaultReport.setFaultDesc(map.get("faultDesc"));
-        equipFaultReport.setStatus(map.get("status"));
+        equipFaultReport.setStatus("0001");
+        equipFaultReport.setDelFlag("0");
         equipFaultReport.setReportPerson(map.get("reportPerson"));
+        equipFaultReport.setCreateBy(map.get("reportPerson"));
+        equipFaultReport.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         equipFaultReport.setMaintenanceWorker(map.get("maintenanceWorker"));
         equipFaultReport.setRemarks(map.get("remarks"));
         equipFaultReport.setCreateBy(map.get("createBy"));
@@ -114,6 +151,7 @@ public class EquipFaultReportController {
         equipFaultReportService.insert(equipFaultReport);
         return Result.success("添加成功");
     }
+
     @RequestMapping(value="/edit2",method= RequestMethod.POST)
     public Result edit2(@ModelAttribute EquipFaultReport equipFaultReport) {
         System.out.println(equipFaultReport.toString());
