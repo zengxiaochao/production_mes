@@ -124,5 +124,9 @@ public class BasFactoryController {
         basFactoryService.update(BasFactory);
         return Result.success("修改成功");
     }
+    @GetMapping("selectByName")
+    public List<BasFactory>  selectByName(String factoryname) {
+        return this.basFactoryService.queryByName(0,1000,factoryname);
+    }
 
 }

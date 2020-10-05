@@ -32,7 +32,13 @@
         from production_mes2.bas_workshop
         limit #{offset}, #{limit}
     </select>
-
+    <select id="queryByName" resultMap="BasWorkshopMap">
+        select
+          q.*
+        from production_mes2.bas_workshop q
+        where q.shopName like "%"#{shopname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasWorkshopMap">
         select

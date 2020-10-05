@@ -63,4 +63,5 @@ public interface BasWorkcellDao {
      */
     int deleteById(String id);
 
+    List<BasWorkcell> queryByName(int i, int i1, String cellname);
 }

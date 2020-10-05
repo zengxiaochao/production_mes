@@ -53,4 +53,5 @@ public interface BasWorkstationinfosService {
      */
     boolean deleteById(String id);
 
+    List<BasWorkstationinfos> queryByName(int i, int i1, String stationname);
 }

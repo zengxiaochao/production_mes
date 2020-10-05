@@ -76,4 +76,9 @@ public class BasFactoryServiceImpl implements BasFactoryService {
     public boolean deleteById(String id) {
         return this.basFactoryDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasFactory> queryByName(int i, int i1, String factoryname) {
+        return this.basFactoryDao.queryByName(i, i1,factoryname);
+    }
 }

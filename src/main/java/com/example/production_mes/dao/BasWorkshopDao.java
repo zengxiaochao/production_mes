@@ -63,4 +63,5 @@ public interface BasWorkshopDao {
      */
     int deleteById(String id);
 
+    List<BasWorkshop> queryByName(int i, int i1, String shopname);
 }

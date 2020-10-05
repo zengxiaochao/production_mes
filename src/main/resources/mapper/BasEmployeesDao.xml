@@ -29,7 +29,13 @@
         from production_mes2.bas_employees
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasEmployeesMap">
+        select
+          q.*
+        from production_mes2.bas_employees q
+        where q.employeeName like "%"#{employeename}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasEmployeesMap">
         select

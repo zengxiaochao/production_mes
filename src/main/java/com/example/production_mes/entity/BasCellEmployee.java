@@ -47,7 +47,24 @@ public class BasCellEmployee implements Serializable {
      * 更新时间
      */
     private Date updateDate;
+    private String cellname;
+    private String employeename;
 
+    public String getCellname() {
+        return cellname;
+    }
+
+    public void setCellname(String cellname) {
+        this.cellname = cellname;
+    }
+
+    public String getEmployeename() {
+        return employeename;
+    }
+
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
+    }
 
     public String getId() {
         return id;

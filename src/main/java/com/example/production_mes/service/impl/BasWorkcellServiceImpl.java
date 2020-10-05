@@ -76,4 +76,9 @@ public class BasWorkcellServiceImpl implements BasWorkcellService {
     public boolean deleteById(String id) {
         return this.basWorkcellDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasWorkcell> queryByName(int i, int i1, String cellname) {
+        return this.basWorkcellDao.queryByName(i, i1,cellname);
+    }
 }

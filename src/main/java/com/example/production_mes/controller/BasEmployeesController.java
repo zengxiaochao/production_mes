@@ -3,6 +3,7 @@ package com.example.production_mes.controller;
 import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.BasEmployees;
 import com.example.production_mes.entity.BasEnterprise;
+import com.example.production_mes.entity.BasFactory;
 import com.example.production_mes.service.BasEmployeesService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
@@ -129,4 +130,9 @@ public class BasEmployeesController {
         basEmployeesService.update(BasEmployees);
         return Result.success("修改成功");
     }
+    @GetMapping("selectByName")
+    public List<BasEmployees>  selectByName(String employeename) {
+        return this.basEmployeesService.queryByName(0,1000,employeename);
+    }
+
 }
