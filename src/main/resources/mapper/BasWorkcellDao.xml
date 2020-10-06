@@ -5,6 +5,7 @@
     <resultMap type="com.example.production_mes.entity.BasWorkcell" id="BasWorkcellMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="cellname" column="cellName" jdbcType="VARCHAR"/>
+        <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
         <result property="cellnumber" column="cellNumber" jdbcType="VARCHAR"/>
         <result property="cellmaster" column="cellMaster" jdbcType="VARCHAR"/>
         <result property="celldescription" column="cellDescription" jdbcType="VARCHAR"/>
@@ -33,11 +34,13 @@
     </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasWorkcellMap">
-        select
-          id, cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id
-        from production_mes2.bas_workcell
-        limit #{offset}, #{limit}
-    </select>
+            select
+              bc.*,bws.stationName
+            from production_mes2.bas_workcell bc,
+            production_mes2.bas_workstationinfos bws
+            where bc.station_id = bws.id
+            limit #{offset}, #{limit}
+        </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasWorkcellMap">

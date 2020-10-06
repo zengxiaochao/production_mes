@@ -35,6 +35,19 @@ public class BasLine implements Serializable {
      * 所属车间
      */
     private String workshopId;
+
+    public String getWorkshopname() {
+        return workshopname;
+    }
+
+    public void setWorkshopname(String workshopname) {
+        this.workshopname = workshopname;
+    }
+
+    /**
+     * 所属车间
+     */
+    private String workshopname;
     /**
      * 创建者
      */

@@ -44,7 +44,10 @@ public class BasCellEmployeeController {
     public List<BasCellEmployee> selectAll() {
         return this.basCellEmployeeService.queryAllByLimit(0,1000);
     }
-
+    @GetMapping("selectByName")
+    public List<BasCellEmployee>  selectByName(String employeename) {
+        return this.basCellEmployeeService.queryByName(0,1000,employeename);
+    }
     @GetMapping("deleteById")
     public Result deleteById(String id) {
         System.out.println(id);

@@ -59,7 +59,18 @@ public class BasWorkcell implements Serializable {
      * 所属工站
      */
     private String stationId;
+    /**
+     * 所属工站
+     */
+    private String stationname;
 
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
 
     public String getId() {
         return id;

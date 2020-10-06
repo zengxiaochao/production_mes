@@ -24,22 +24,26 @@
         from production_mes2.bas_cell_employee
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasCellEmployeeMap">
+        select
+          q.*,be.employeeName
+        from production_mes2.bas_cell_employee q,
+        production_mes2.bas_employees be
+        where q.employee_id = be.id
+        and  be.employeeName like "%"#{employeename}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasCellEmployeeMap">
---         select
---           id, employee_id, cell_id, remarks, del_flag, create_by, create_date, update_by, update_date
---         from production_mes2.bas_cell_employee
---         limit #{offset}, #{limit}
 
           select
-          id,f.employeeName,p.cellName,remarks
+          a.*,b.employeeName,c.cellName
         from
-        production_mes2.bas_cell_employee pf,
-        production_mes2.bas_employees f,
-        production_mes2.bas_workcell p
-        where f.id = pf.employee_id
-        and p.id = pf.cell_id
+        production_mes2.bas_cell_employee a,
+        production_mes2.bas_employees b,
+        production_mes2.bas_workcell c
+        where b.id = a.employee_id
+        and c.id = a.cell_id
         limit #{offset}, #{limit}
     </select>
 

@@ -51,6 +51,19 @@ public class BasWorkstationinfos implements Serializable {
      * 删除标记
      */
     private String delFlag;
+
+    public String getLinename() {
+        return linename;
+    }
+
+    public void setLinename(String linename) {
+        this.linename = linename;
+    }
+
+    /**
+     * 所属产线
+     */
+    private String linename;
     /**
      * 所属产线
      */

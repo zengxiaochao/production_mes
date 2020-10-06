@@ -5,6 +5,7 @@
     <resultMap type="com.example.production_mes.entity.BasWorkstationinfos" id="BasWorkstationinfosMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
+        <result property="linename" column="stationName" jdbcType="VARCHAR"/>
         <result property="stationno" column="stationNo" jdbcType="VARCHAR"/>
         <result property="stationmaster" column="stationMaster" jdbcType="VARCHAR"/>
         <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
@@ -26,11 +27,13 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasWorkstationinfosMap">
-        select
-          id, stationName, stationNo, stationMaster, create_by, create_date, update_by, update_date, remarks, del_flag, line_id
-        from production_mes2.bas_workstationinfos
-        limit #{offset}, #{limit}
-    </select>
+            select
+              bws.*,bl.lineName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workstationinfos bws
+            where bl.id = bws.line_id
+            limit #{offset}, #{limit}
+        </select>
     <select id="queryByName" resultMap="BasWorkstationinfosMap">
         select
           q.*

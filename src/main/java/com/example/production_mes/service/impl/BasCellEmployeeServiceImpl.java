@@ -76,4 +76,9 @@ public class BasCellEmployeeServiceImpl implements BasCellEmployeeService {
     public boolean deleteById(String id) {
         return this.basCellEmployeeDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasCellEmployee> queryByName(int i, int i1, String employeename) {
+        return this.basCellEmployeeDao.queryByName(i, i1,employeename);
+    }
 }

@@ -25,13 +25,22 @@
         where id = #{id}
     </select>
 
-    <!--查询指定行数据-->
+<!--    &lt;!&ndash;查询指定行数据&ndash;&gt;-->
+<!--    <select id="queryAllByLimit" resultMap="BasWorkshopMap">-->
+<!--        select-->
+<!--          id, shopName, shopNo, master, description, factory_id, create_by, create_date, update_by, update_date, remarks, del_flag-->
+<!--        from production_mes2.bas_workshop-->
+<!--        limit #{offset}, #{limit}-->
+<!--    </select>-->
     <select id="queryAllByLimit" resultMap="BasWorkshopMap">
         select
-          id, shopName, shopNo, master, description, factory_id, create_by, create_date, update_by, update_date, remarks, del_flag
-        from production_mes2.bas_workshop
+          bw.*,bf.factoryName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_workshop bw
+        where bw.factory_id = bf.id
         limit #{offset}, #{limit}
     </select>
+
     <select id="queryByName" resultMap="BasWorkshopMap">
         select
           q.*
