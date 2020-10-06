@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.entity.BasLine;
 import com.example.production_mes.entity.BasWorkcell;
 import com.example.production_mes.entity.BasWorkorder;
 import com.example.production_mes.service.BasWorkorderService;
@@ -40,5 +41,9 @@ public class BasWorkorderController {
     public List<BasWorkorder> selectAll() {
         return this.basWorkorderService.queryAllByLimit(0,1000);
     }
+    @GetMapping("selectByName")
+    public List<BasWorkorder>  selectByselectByordercode(String ordercode) {
+        return this.basWorkorderService.queryByName(0,1000,ordercode);
 
+    }
 }

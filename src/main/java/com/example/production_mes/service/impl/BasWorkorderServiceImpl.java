@@ -76,4 +76,9 @@ public class BasWorkorderServiceImpl implements BasWorkorderService {
     public boolean deleteById(String id) {
         return this.basWorkorderDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasWorkorder> queryByName(int i, int i1, String ordercode) {
+        return this.basWorkorderDao.queryByName(i, i1,ordercode);
+    }
 }

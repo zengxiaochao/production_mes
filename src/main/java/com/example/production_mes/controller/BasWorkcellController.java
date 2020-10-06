@@ -86,7 +86,7 @@ public class BasWorkcellController {
     ) {
         BasWorkcell BasWorkcell = new BasWorkcell();
         BasWorkcell.setId(map.get("id"));
-        BasWorkcell.setStationId(map.get("stationId"));
+        BasWorkcell.setStationId(map.get("station_id"));
         BasWorkcell.setCellname(map.get("cellname"));
         BasWorkcell.setCellnumber(map.get("cellnumber"));
         BasWorkcell.setCellmaster(map.get("cellmaster"));

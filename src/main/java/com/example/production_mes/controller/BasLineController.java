@@ -82,7 +82,7 @@ public class BasLineController {
     ) {
         BasLine basLine = new BasLine();
         basLine.setId(map.get("id"));
-        basLine.setWorkshopId(map.get("workshopId"));
+        basLine.setWorkshopId(map.get("workshopid"));
         basLine.setLinename(map.get("linename"));
         basLine.setLinenumber(map.get("linenumber"));
         basLine.setLinemaster(map.get("linemaster"));

@@ -27,9 +27,12 @@
     </select>
     <select id="queryByName" resultMap="BasLineMap">
         select
-          q.*
-        from production_mes2.bas_line q
-        where q.lineName like "%"#{linename}"%"
+              bl.*,bw.shopName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workshop bw
+        where bl.lineName like "%"#{linename}"%"
+        and  bl.del_flag = '0'
+        and bw.id = bl.workshop_id
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->

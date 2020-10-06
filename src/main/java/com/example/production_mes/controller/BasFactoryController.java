@@ -85,6 +85,7 @@ public class BasFactoryController {
         basFactory.setId(map.get("id"));
         basFactory.setFactoryname(map.get("factoryname"));
         basFactory.setFactorybuilddate(map.get("factorybuildDate"));
+        basFactory.setEnterpriseId(map.get("enterpriseid"));
         basFactory.setFactoryaddress(map.get("factoryaddress"));
         basFactory.setFactoryphone(map.get("factoryphone"));
         basFactory.setFactoryecode(map.get("factoryecode"));

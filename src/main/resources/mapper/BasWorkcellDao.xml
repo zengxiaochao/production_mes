@@ -27,9 +27,11 @@
     </select>
     <select id="queryByName" resultMap="BasWorkcellMap">
         select
-          q.*
-        from production_mes2.bas_workcell q
-        where q.cellName like "%"#{cellname}"%"
+              bc.*,bws.stationName
+            from production_mes2.bas_workcell bc,
+            production_mes2.bas_workstationinfos bws
+            where bc.station_id = bws.id
+        and bc.cellName like "%"#{cellname}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->

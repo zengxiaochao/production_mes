@@ -86,8 +86,8 @@ public class BasCellEmployeeController {
     ) {
         BasCellEmployee BasCellEmployee = new BasCellEmployee();
         BasCellEmployee.setId(map.get("id"));
-        BasCellEmployee.setEmployeeId(map.get("employeeId"));
-        BasCellEmployee.setCellId(map.get("cellId"));
+        BasCellEmployee.setEmployeeId(map.get("employee_id"));
+        BasCellEmployee.setCellId(map.get("cell_id"));
         BasCellEmployee.setRemarks(map.get("remarks"));
         BasCellEmployee.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         BasCellEmployee = basCellEmployeeService.update(BasCellEmployee);
