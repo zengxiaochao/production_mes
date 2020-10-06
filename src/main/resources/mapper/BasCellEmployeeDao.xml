@@ -26,11 +26,14 @@
     </select>
     <select id="queryByName" resultMap="BasCellEmployeeMap">
         select
-          q.*,be.employeeName
-        from production_mes2.bas_cell_employee q,
-        production_mes2.bas_employees be
-        where q.employee_id = be.id
-        and  be.employeeName like "%"#{employeename}"%"
+          a.*,b.employeeName,c.cellName
+        from
+        production_mes2.bas_cell_employee a,
+        production_mes2.bas_employees b,
+        production_mes2.bas_workcell c
+        where b.id = a.employee_id
+        and c.id = a.cell_id
+        and  b.employeeName like "%"#{employeename}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->

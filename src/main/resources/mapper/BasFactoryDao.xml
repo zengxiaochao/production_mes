@@ -29,9 +29,11 @@
     </select>
     <select id="queryByName" resultMap="BasFactoryMap">
         select
-          q.*
-        from production_mes2.bas_factory q
-        where q.factoryName like "%"#{factoryname}"%"
+          bf.*,be.enterName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_enterprise be
+        where bf.enterprise_id = be.id
+        and bf.factoryName like "%"#{factoryname}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->
