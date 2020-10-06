@@ -33,6 +33,8 @@
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="cellId" column="cell_id" jdbcType="VARCHAR"/>
         <result property="stationId" column="station_id" jdbcType="VARCHAR"/>
+        <result property="cellname" column="cellName" jdbcType="VARCHAR"/>
+        <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -46,56 +48,29 @@
     <!-- 按条件查询   -->
     <select id="query" resultMap="BasPadMap">
     select
-    id,
-    qrCode,
-    type,
-    spec,
-    cell_id,
-    station_id,
-    supplier,
-    manufacturer,
-    factoryNumber,
-    purpose,
-    buyDate,
-    person,
-    organization,
-    ip,
-    comBaudrate,
-    comDataseat,
-    comBegin,
-    comEnd,
-    checkMode,
-    sysParam,
-    pADSC,
-    pADNucleus,
-    pADMemory,
-    capacity,
-    del_flag,
-    remarks,
-    create_by,
-    create_date,
-    update_by,
-    update_date
-    from production_mes2.bas_pad
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="type != null and type != ''">
-            and type = #{type}
-        </if>
-        <if test="spec != null and spec != ''">
-            and spec = #{spec}
-        </if>
-    </where>
+        bp.*,ws.stationName,bw.cellName
+        from production_mes2.bas_pad bp,
+        production_mes2.bas_workstationinfos ws,
+        production_mes2.bas_workcell bw
+        where bp.del_flag='0'
+        and bp.station_id = ws.id
+        and bp.cell_id = bw.id
+        and bp.qrCode like "%"#{id}"%"
+        and bp.type like "%"#{type}"%"
+        and bp.spec like "%"#{spec}"%"
+
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasPadMap">
         select
-          qrCode, type, spec, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, pADSC, pADNucleus, pADMemory, capacity, create_by, create_date, update_by, update_date, remarks, del_flag, id, cell_id, station_id
-        from production_mes2.bas_pad
-        where del_flag='0'
+          bp.*,ws.stationName,bw.cellName
+        from production_mes2.bas_pad bp,
+        production_mes2.bas_workstationinfos ws,
+        production_mes2.bas_workcell bw
+        where bp.del_flag='0'
+        and bp.station_id = ws.id
+        and bp.cell_id = bw.id
         limit #{offset}, #{limit}
     </select>
 
