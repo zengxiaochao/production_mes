@@ -83,7 +83,7 @@ public class BasWorkshopController {
         BasWorkshop.setShopname(map.get("shopname"));
         BasWorkshop.setShopno(map.get("shopno"));
         BasWorkshop.setMaster(map.get("master"));
-        BasWorkshop.setMaster(map.get("description"));
+        BasWorkshop.setDescription(map.get("description"));
 //        BasWorkshop.setRemarks(map.get("remarks"));
         BasWorkshop.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         BasWorkshop = basWorkshopService.update(BasWorkshop);
@@ -99,7 +99,7 @@ public class BasWorkshopController {
         BasWorkshop.setShopname(map.get("shopName"));
         BasWorkshop.setShopno(map.get("shopNo"));
         BasWorkshop.setMaster(map.get("master"));
-        BasWorkshop.setMaster(map.get("description"));
+        BasWorkshop.setDescription(map.get("description"));
         BasWorkshop.setCreateBy(map.get("create_by"));
         BasWorkshop.setUpdateBy(map.get("updateBy"));
         BasWorkshop.setRemarks(map.get("remarks"));
