@@ -100,7 +100,7 @@ public class BasLineController {
         BasLine BasLine = new BasLine();
         BasLine.setId(IDGenerator.generateIDByDateStr());
         System.out.println(BasLine.getId());
-        BasLine.setWorkshopId(map.get("workshop_id"));
+        BasLine.setWorkshopId(map.get("workshopid"));
         BasLine.setLinename(map.get("lineName"));
         BasLine.setLinenumber(map.get("lineNumber"));
         BasLine.setLinemaster(map.get("lineMaster"));

@@ -95,7 +95,7 @@ public class BasWorkshopController {
         BasWorkshop BasWorkshop = new BasWorkshop();
         BasWorkshop.setId(IDGenerator.generateIDByDateStr());
         System.out.println(BasWorkshop.getId());
-        BasWorkshop.setFactoryId(map.get("factory_id"));
+        BasWorkshop.setFactoryId(map.get("factoryid"));
         BasWorkshop.setShopname(map.get("shopName"));
         BasWorkshop.setShopno(map.get("shopNo"));
         BasWorkshop.setMaster(map.get("master"));

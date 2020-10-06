@@ -5,7 +5,7 @@
     <resultMap type="com.example.production_mes.entity.BasWorkstationinfos" id="BasWorkstationinfosMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
-        <result property="linename" column="stationName" jdbcType="VARCHAR"/>
+        <result property="linename" column="lineName" jdbcType="VARCHAR"/>
         <result property="stationno" column="stationNo" jdbcType="VARCHAR"/>
         <result property="stationmaster" column="stationMaster" jdbcType="VARCHAR"/>
         <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
