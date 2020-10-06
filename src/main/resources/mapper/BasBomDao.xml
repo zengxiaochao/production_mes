@@ -123,4 +123,13 @@
         delete from production_mes2.bas_bom where id = #{id}
     </delete>
 
+
+    <select id="queryname" resultMap="BasBomMap">
+        select
+          id, bomName, bomVersion, product_id, status, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.bas_bom
+        where bomName = #{name}
+    </select>
+
+
 </mapper>

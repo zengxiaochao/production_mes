@@ -1,6 +1,7 @@
 package com.example.production_mes.service;
 
 import com.example.production_mes.entity.BasBom;
+import com.example.production_mes.entity.BasBomList;
 
 import java.util.List;
 
@@ -52,5 +53,18 @@ public interface BasBomService {
      * @return 是否成功
      */
     boolean deleteById(String id);
+
+    List<BasBom> queryname(String name);
+
+    /**
+
+    * create by weizhipeng
+    * Time at 2020/10/6
+    * description: 查询所需数据
+    * @return
+    * @param
+
+    */
+    List<BasBomList> queryAll();
 
 }

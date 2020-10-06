@@ -30,6 +30,7 @@ public class BasBomDetailServiceImpl implements BasBomDetailService {
         return this.basBomDetailDao.queryById(id);
     }
 
+
     /**
      * 查询多条数据
      *

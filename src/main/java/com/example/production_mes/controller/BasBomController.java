@@ -2,6 +2,7 @@ package com.example.production_mes.controller;
 
 import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.BasBom;
+import com.example.production_mes.entity.BasBomList;
 import com.example.production_mes.service.BasBomService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * 物料清单(BasBom)表控制层
@@ -40,11 +42,24 @@ public class BasBomController {
     }
 
 
+    @GetMapping("selectname")
+    public List<BasBom> selectname(String name) {
+        System.out.println("Hello");
+        return basBomService.queryname(name);
+    }
+
+
+
+
+    @GetMapping("selectAll")
+    public List<BasBom> selectAll() {
+        return this.basBomService.queryAllByLimit(0,100000);
+    }
+
 
     @RequestMapping(value="/edit")
     public Result edit(@RequestBody HashMap<String, String> map) {
         BasBom basBom = new BasBom();
-
 
         basBom.setId(map.get("id"));
         basBom.setBomname(map.get("bomname"));
@@ -89,5 +104,8 @@ public class BasBomController {
         basBomService.insert(basBom);
         return Result.success("添加成功");
     }
+
+
+
 
 }
