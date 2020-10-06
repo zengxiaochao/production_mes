@@ -84,7 +84,7 @@ public class BasWorkstationinfosController {
     ) {
         BasWorkstationinfos BasWorkstationinfos = new BasWorkstationinfos();
         BasWorkstationinfos.setId(map.get("id"));
-        BasWorkstationinfos.setLineId(map.get("lineId"));
+        BasWorkstationinfos.setLineId(map.get("line_id"));
         BasWorkstationinfos.setStationname(map.get("stationname"));
         BasWorkstationinfos.setStationno(map.get("stationno"));
         BasWorkstationinfos.setStationmaster(map.get("stationmaster"));

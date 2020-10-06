@@ -79,12 +79,12 @@ public class BasWorkshopController {
     ) {
         BasWorkshop BasWorkshop = new BasWorkshop();
         BasWorkshop.setId(map.get("id"));
-        BasWorkshop.setFactoryId(map.get("factoryId"));
+        BasWorkshop.setFactoryId(map.get("factoryid"));
         BasWorkshop.setShopname(map.get("shopname"));
         BasWorkshop.setShopno(map.get("shopno"));
         BasWorkshop.setMaster(map.get("master"));
         BasWorkshop.setMaster(map.get("description"));
-        BasWorkshop.setRemarks(map.get("remarks"));
+//        BasWorkshop.setRemarks(map.get("remarks"));
         BasWorkshop.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         BasWorkshop = basWorkshopService.update(BasWorkshop);
         return Result.success("修改成功");
