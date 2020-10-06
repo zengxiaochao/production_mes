@@ -132,6 +132,15 @@ public class BasPad implements Serializable {
      */
     private String stationId;
 
+    /**
+     * 所属工位
+     */
+    private String cellname;
+    /**
+     * 所属工站
+     */
+    private String stationname;
+
 
     public String getQrcode() {
         return qrcode;
@@ -373,4 +382,19 @@ public class BasPad implements Serializable {
         this.stationId = stationId;
     }
 
+    public String getCellname() {
+        return cellname;
+    }
+
+    public void setCellname(String cellname) {
+        this.cellname = cellname;
+    }
+
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
 }
