@@ -63,4 +63,20 @@ public interface TecFlowProcessDao {
      */
     int deleteById(String id);
 
+    /**
+     * 查询多条数据
+     *
+     * @param offset 查询起始位置
+     * @param limit  查询条数
+     * @param flowname 所属流程名
+     * @return 对象列表
+     */
+    List<TecFlowProcess> queryByName(int offset, int limit, String flowname);
+
+    /**
+     * 通过id删除指定数据
+     * @param id
+     * @return
+     */
+    void updateById(String id);
 }

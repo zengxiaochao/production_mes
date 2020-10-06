@@ -138,4 +138,14 @@
         delete from production_mes2.sys_dict where id = #{id}
     </delete>
 
+
+    <select id="queryBytype" resultMap="SysDictMap">
+        select
+          id, value, label, type, description, sort, parent_id, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.sys_dict
+        where type  =  #{type}
+    </select>
+
+
+
 </mapper>

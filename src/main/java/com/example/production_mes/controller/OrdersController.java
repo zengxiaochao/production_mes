@@ -1,6 +1,7 @@
 package com.example.production_mes.controller;
 
 import com.example.production_mes.dto.Result;
+import com.example.production_mes.entity.EquipRepair;
 import com.example.production_mes.entity.Orders;
 import com.example.production_mes.service.OrdersService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Orders)表控制层
@@ -45,5 +47,8 @@ public class OrdersController {
         return Result.success("结束订单",this.ordersService.doneNum());
     }
 
-
+    @GetMapping("selectAll")
+    public List<Orders> selectAll() {
+        return this.ordersService.queryAllByLimit(0,10);
+    }
 }

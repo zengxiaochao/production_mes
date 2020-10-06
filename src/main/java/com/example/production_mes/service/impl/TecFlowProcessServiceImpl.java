@@ -76,4 +76,28 @@ public class TecFlowProcessServiceImpl implements TecFlowProcessService {
     public boolean deleteById(String id) {
         return this.tecFlowProcessDao.deleteById(id) > 0;
     }
+
+    /**
+     * 查询多条数据
+     *
+     * @param offset 查询起始位置
+     * @param limit  查询条数
+     * @param flowname 所属流程名
+     * @return 对象列表
+     */
+    @Override
+    public List<TecFlowProcess> queryByName(int offset, int limit, String flowname) {
+        return this.tecFlowProcessDao.queryByName(offset, limit,flowname);
+    }
+
+    /**
+     * 通过id删除指定数据
+     * @param id
+     * @return
+     */
+    @Override
+    public void updateById(String id) {
+        this.tecFlowProcessDao.updateById(id);
+        return ;
+    }
 }

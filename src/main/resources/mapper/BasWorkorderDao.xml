@@ -33,7 +33,13 @@
         from production_mes2.bas_workorder
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasWorkorderMap">
+        select
+          q.*
+        from production_mes2.bas_workorder q
+        where q.orderCode like "%"#{ordercode}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasWorkorderMap">
         select

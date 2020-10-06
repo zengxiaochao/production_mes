@@ -18,6 +18,14 @@ public class TecFlowProcess implements Serializable {
      */
     private String flowId;
     /**
+     * 流程名
+     */
+    private String flowname;
+    /**
+     * 工序名
+     */
+    private String proname;
+    /**
      * 工序ID
      */
     private String proId;
@@ -131,4 +139,19 @@ public class TecFlowProcess implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getFlowname() {
+        return flowname;
+    }
+
+    public void setFlowname(String flowname) {
+        this.flowname = flowname;
+    }
+
+    public String getProname() {
+        return proname;
+    }
+
+    public void setProname(String proname) {
+        this.proname = proname;
+    }
 }

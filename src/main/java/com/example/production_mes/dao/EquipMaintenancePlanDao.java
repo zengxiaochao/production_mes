@@ -1,6 +1,7 @@
 package com.example.production_mes.dao;
 
 import com.example.production_mes.entity.EquipMaintenancePlan;
+import com.example.production_mes.entity.EquipReport;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -76,4 +77,7 @@ public interface EquipMaintenancePlanDao {
      */
 
     List<EquipMaintenancePlan> selectByType(String equip_type);
+
+
+    List<EquipMaintenancePlan> selectBy(String by);
 }

@@ -28,4 +28,9 @@ public class EquipReportServiceImpl implements com.example.production_mes.servic
         return this.equipReportDao.query(type,spec,id);
     }
 
+    @Override
+    public List<EquipReport> selectBy(String by) {
+        return this.equipReportDao.selectBy(by);
+    }
+
 }

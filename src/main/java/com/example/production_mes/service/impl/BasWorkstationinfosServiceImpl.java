@@ -76,4 +76,9 @@ public class BasWorkstationinfosServiceImpl implements BasWorkstationinfosServic
     public boolean deleteById(String id) {
         return this.basWorkstationinfosDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasWorkstationinfos> queryByName(int i, int i1, String stationname) {
+        return this.basWorkstationinfosDao.queryByName(i, i1,stationname);
+    }
 }

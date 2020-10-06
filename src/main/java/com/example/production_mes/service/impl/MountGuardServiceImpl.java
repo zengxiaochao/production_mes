@@ -1,6 +1,7 @@
 package com.example.production_mes.service.impl;
 
 import com.example.production_mes.dao.MountGuardDao;
+import com.example.production_mes.entity.EquipReport;
 import com.example.production_mes.entity.MountGuard;
 import com.example.production_mes.service.MountGuardService;
 import org.springframework.stereotype.Service;
@@ -76,4 +77,14 @@ public class MountGuardServiceImpl implements MountGuardService {
     public boolean deleteById(String id) {
         return this.mountGuardDao.deleteById(id) > 0;
     }
+    @Override
+    public List<MountGuard> query(String type, String spec, String id) {
+        return this.mountGuardDao.query(type,spec,id);
+    }
+
+    @Override
+    public List<MountGuard> queryByName(int i, int i1, String employeename) {
+        return this.mountGuardDao.queryByName(i, i1,employeename);
+    }
+
 }

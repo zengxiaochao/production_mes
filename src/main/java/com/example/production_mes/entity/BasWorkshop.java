@@ -36,6 +36,19 @@ public class BasWorkshop implements Serializable {
      */
     private String factoryId;
     /**
+     * 所属工厂名称
+     */
+    private String factoryname;
+
+    public String getFactoryname() {
+        return factoryname;
+    }
+
+    public void setFactoryname(String factoryname) {
+        this.factoryname = factoryname;
+    }
+
+    /**
      * 创建者
      */
     private String createBy;

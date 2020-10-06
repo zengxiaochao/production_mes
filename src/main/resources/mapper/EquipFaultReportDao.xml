@@ -38,6 +38,8 @@
         from production_mes2.equip_fault_report
         where ${address} = #{name}
     </select>
+
+
     <!--条件查询-->
     <select id="query" resultMap="EquipFaultReportMap">
         select
@@ -55,6 +57,21 @@
                 and status = #{status}
             </if>
         </where>
+    </select>
+
+    <!--条件查询2-->
+    <select id="selectBy" resultMap="EquipFaultReportMap">
+        select
+        id, equip_id, equip_no, equip_type, equip_loc, fault_desc, status, report_person, assign_time,
+        maintenance_worker, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.equip_fault_report
+        where
+                equip_no like "%"#{by}"%"
+                or equip_type like "%"#{by}"%"
+                or equip_loc like "%"#{by}"%"
+                or fault_desc like "%"#{by}"%"
+                or report_person like "%"#{by}"%"
+                or status like "%"#{by}"%"
     </select>
 
 

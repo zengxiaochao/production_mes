@@ -50,6 +50,8 @@ public class BasProductServiceImpl implements BasProductService {
      */
     @Override
     public BasProduct insert(BasProduct basProduct) {
+        System.out.println("PDD");
+        System.out.println(basProduct.getCreateBy());
         this.basProductDao.insert(basProduct);
         return basProduct;
     }
@@ -74,6 +76,19 @@ public class BasProductServiceImpl implements BasProductService {
      */
     @Override
     public boolean deleteById(String id) {
+
         return this.basProductDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasProduct> search_qrcode(String qrcode) {
+        return basProductDao.query_qrcode(qrcode);
+    }
+
+    @Override
+    public List<BasProduct> search_name(String name) {
+        return basProductDao.query_name(name);
+    }
+
+
 }

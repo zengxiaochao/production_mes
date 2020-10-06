@@ -1,6 +1,7 @@
 package com.example.production_mes.service;
 
 import com.example.production_mes.entity.TecFlow;
+import com.example.production_mes.entity.TecProcess;
 
 import java.util.List;
 
@@ -53,4 +54,7 @@ public interface TecFlowService {
      */
     boolean deleteById(String id);
 
+    List<TecFlow> select(String procode);
+
+    void updateById(String id);
 }

@@ -49,7 +49,14 @@ public class EquipMaintenancePlanController {
     public List<EquipMaintenancePlan> selectByType(String equip_type) {
         return this.equipMaintenancePlanService.selectByType(equip_type);
     }
-
+    /**
+     * 条件查询2
+     * @return
+     */
+    @GetMapping("selectBy")
+    public List<EquipMaintenancePlan> selectBy(String by) {
+        return this.equipMaintenancePlanService.selectBy(by);
+    }
     /**
      * 通过主键查询单条数据
      *

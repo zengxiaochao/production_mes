@@ -5,6 +5,7 @@
     <resultMap type="com.example.production_mes.entity.BasWorkcell" id="BasWorkcellMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="cellname" column="cellName" jdbcType="VARCHAR"/>
+        <result property="stationname" column="stationName" jdbcType="VARCHAR"/>
         <result property="cellnumber" column="cellNumber" jdbcType="VARCHAR"/>
         <result property="cellmaster" column="cellMaster" jdbcType="VARCHAR"/>
         <result property="celldescription" column="cellDescription" jdbcType="VARCHAR"/>
@@ -24,14 +25,24 @@
         from production_mes2.bas_workcell
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasWorkcellMap">
+        select
+              bc.*,bws.stationName
+            from production_mes2.bas_workcell bc,
+            production_mes2.bas_workstationinfos bws
+            where bc.station_id = bws.id
+        and bc.cellName like "%"#{cellname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasWorkcellMap">
-        select
-          id, cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id
-        from production_mes2.bas_workcell
-        limit #{offset}, #{limit}
-    </select>
+            select
+              bc.*,bws.stationName
+            from production_mes2.bas_workcell bc,
+            production_mes2.bas_workstationinfos bws
+            where bc.station_id = bws.id
+            limit #{offset}, #{limit}
+        </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasWorkcellMap">
@@ -81,8 +92,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_workcell(cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id)
-        values (#{cellname}, #{cellnumber}, #{cellmaster}, #{celldescription}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{stationId})
+        insert into production_mes2.bas_workcell(id, cellName, cellNumber, cellMaster, cellDescription, create_by, create_date, update_by, update_date, remarks, del_flag, station_id)
+        values (#{id},#{cellname}, #{cellnumber}, #{cellmaster}, #{celldescription}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}, #{stationId})
     </insert>
 
     <!--通过主键修改数据-->

@@ -53,4 +53,5 @@ public interface BasEmployeesService {
      */
     boolean deleteById(String id);
 
+    List<BasEmployees> queryByName(int i, int i1, String employeename);
 }

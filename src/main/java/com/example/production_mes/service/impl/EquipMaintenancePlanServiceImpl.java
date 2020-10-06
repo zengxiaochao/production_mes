@@ -2,6 +2,7 @@ package com.example.production_mes.service.impl;
 
 import com.example.production_mes.dao.EquipMaintenancePlanDao;
 import com.example.production_mes.entity.EquipMaintenancePlan;
+import com.example.production_mes.entity.EquipReport;
 import com.example.production_mes.service.EquipMaintenancePlanService;
 import org.springframework.stereotype.Service;
 
@@ -89,5 +90,10 @@ public class EquipMaintenancePlanServiceImpl implements EquipMaintenancePlanServ
     @Override
     public void delete(String id) {
         equipMaintenancePlanDao.delete(id);
+    }
+
+    @Override
+    public List<EquipMaintenancePlan> selectBy(String by) {
+        return this.equipMaintenancePlanDao.selectBy(by);
     }
 }

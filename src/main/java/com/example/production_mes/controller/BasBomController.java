@@ -1,12 +1,17 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.dto.Result;
 import com.example.production_mes.entity.BasBom;
 import com.example.production_mes.service.BasBomService;
+import com.example.production_mes.utils.IDGenerator;
+import com.example.production_mes.utils.TimeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * 物料清单(BasBom)表控制层
@@ -32,6 +37,57 @@ public class BasBomController {
     @GetMapping("selectOne")
     public BasBom selectOne(String id) {
         return this.basBomService.queryById(id);
+    }
+
+
+
+    @RequestMapping(value="/edit")
+    public Result edit(@RequestBody HashMap<String, String> map) {
+        BasBom basBom = new BasBom();
+
+
+        basBom.setId(map.get("id"));
+        basBom.setBomname(map.get("bomname"));
+        basBom.setBomversion(map.get("bomversion"));
+
+        basBom.setStatus(map.get("status"));
+        basBom.setUpdateBy(map.get("reportPerson"));
+        basBom.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        basBom.setCreateBy(map.get("reportPerson"));
+        basBom.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        basBom.setDelFlag("0");
+
+        basBomService.update(basBom);
+
+
+        return Result.success("修改成功");
+    }
+
+    @GetMapping("deleteById")
+    public Result deleteById(String id) {
+        BasBom basBom = new BasBom();
+        basBom.setId(id);
+        basBomService.deleteById(id);
+        return Result.success("删除成功");
+    }
+
+    @RequestMapping(value="/add")
+    public Result add(@RequestBody HashMap<String, String> map) {
+
+        BasBom basBom = new BasBom();
+        basBom.setId(IDGenerator.generateUUID());
+        basBom.setCreateBy(map.get("reportPerson"));
+        basBom.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        basBom.setBomname(map.get("bomname"));
+        basBom.setBomversion(map.get("bomversion"));
+        basBom.setProductId(map.get("productid"));
+        basBom.setStatus(map.get("status"));
+        basBom.setUpdateBy(map.get("reportPerson"));
+        basBom.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
+        basBom.setDelFlag("0");
+        basBom.setProductId("111");
+        basBomService.insert(basBom);
+        return Result.success("添加成功");
     }
 
 }

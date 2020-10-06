@@ -34,6 +34,21 @@
         where del_flag = '0'
         limit #{offset}, #{limit}
     </select>
+
+    <!--条件查询2-->
+    <select id="selectBy" resultMap="EquipMaintenancePlanMap">
+        select
+          id, equip_type, maintenance, cycle, warn_time, user_name, user_id, create_by, update_by, create_date, update_date, remarks, del_flag
+        from production_mes2.equip_maintenance_plan
+        where del_flag = '0'
+        and (
+                    equip_type like "%"#{by}"%"
+                    or maintenance like "%"#{by}"%"
+                    or cycle like "%"#{by}"%"
+                    or warn_time like "%"#{by}"%"
+                    or user_name like "%"#{by}"%")
+    </select>
+
     <!--条件查询-->
     <select id="selectByType" resultMap="EquipMaintenancePlanMap">
         select

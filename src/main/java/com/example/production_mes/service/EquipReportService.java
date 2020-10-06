@@ -8,4 +8,6 @@ public interface EquipReportService {
     List<EquipReport> queryAllByLimit(int offset, int limit);
 
     List<EquipReport> query(String type,String spec,String id);
+
+    List<EquipReport> selectBy(String by);
 }

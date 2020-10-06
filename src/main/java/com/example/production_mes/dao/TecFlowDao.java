@@ -1,6 +1,7 @@
 package com.example.production_mes.dao;
 
 import com.example.production_mes.entity.TecFlow;
+import com.example.production_mes.entity.TecProcess;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -62,5 +63,14 @@ public interface TecFlowDao {
      * @return 影响行数
      */
     int deleteById(String id);
+
+    List<TecFlow> select(String procode);
+
+
+    /**
+     * 通过主键修改数据
+     * @param id
+     */
+    void updateById(String id);
 
 }

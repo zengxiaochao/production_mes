@@ -28,7 +28,16 @@
         select
           id, proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag
         from production_mes2.tec_process
+        where del_flag='1'
         limit #{offset}, #{limit}
+    </select>
+
+    <!--条件查询-->
+    <select id="select" resultMap="TecProcessMap">
+        select
+          id, proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.tec_process
+        where proCode like "%"#{procode}"%"
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -65,15 +74,15 @@
                 and remarks = #{remarks}
             </if>
             <if test="delFlag != null and delFlag != ''">
-                and del_flag = #{delFlag}
+                and del_flag = '1'
             </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.tec_process(proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{procode}, #{proname}, #{prodesc}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.tec_process(id,proCode, proName, proDesc, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{procode}, #{proname}, #{prodesc}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->
@@ -115,5 +124,17 @@
     <delete id="deleteById">
         delete from production_mes2.tec_process where id = #{id}
     </delete>
+
+    <!--通过主键修改-->
+    <update id="updateById">
+        update production_mes2.tec_process
+        <set>
+        <if test="id != null and id != ''">
+            del_flag = '0',
+        </if>
+        </set>
+        where id = #{id}
+    </update>
+
 
 </mapper>

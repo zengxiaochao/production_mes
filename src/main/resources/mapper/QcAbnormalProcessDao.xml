@@ -35,6 +35,19 @@
         from production_mes2.qc_abnormal_process
         limit #{offset}, #{limit}
     </select>
+    <!--查询指定行数据-->
+    <select id="queryByName" resultMap="QcAbnormalProcessMap">
+        select
+          pf.*,be.employeeName,p.proName
+        from production_mes2.qc_abnormal_process ap,
+        production_mes2.bas_employees be,
+        production_mes2.tec_process p
+        where be.id = ap.report_user
+        and p.id = ap.pro_id
+        and pf.del_flag = '1'
+        and f.flowName like "%"#{flowname}"%"
+        limit #{offset}, #{limit}
+    </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="QcAbnormalProcessMap">

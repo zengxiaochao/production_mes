@@ -63,4 +63,6 @@ public interface SysDictDao {
      */
     int deleteById(String id);
 
+    List<SysDict> queryBytype(String type);
+
 }

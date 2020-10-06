@@ -53,4 +53,7 @@ public interface MountGuardService {
      */
     boolean deleteById(String id);
 
+    List<MountGuard> query(String type, String spec, String id);
+
+    List<MountGuard> queryByName(int i, int i1, String employeename);
 }

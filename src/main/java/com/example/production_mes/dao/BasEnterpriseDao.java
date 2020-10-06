@@ -63,4 +63,5 @@ public interface BasEnterpriseDao {
      */
     int deleteById(String id);
 
+    List<BasEnterprise> queryByName(int i, int i1, String stationname);
 }

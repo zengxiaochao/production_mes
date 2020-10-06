@@ -5,6 +5,7 @@
     <resultMap type="com.example.production_mes.entity.BasLine" id="BasLineMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="linename" column="lineName" jdbcType="VARCHAR"/>
+        <result property="workshopname" column="shopName" jdbcType="VARCHAR"/>
         <result property="linenumber" column="lineNumber" jdbcType="VARCHAR"/>
         <result property="linemaster" column="lineMaster" jdbcType="VARCHAR"/>
         <result property="linedescription" column="lineDescription" jdbcType="VARCHAR"/>
@@ -24,14 +25,26 @@
         from production_mes2.bas_line
         where id = #{id}
     </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="BasLineMap">
+    <select id="queryByName" resultMap="BasLineMap">
         select
-          id, lineName, lineNumber, lineMaster, lineDescription, workshop_id, create_by, create_date, update_by, update_date, remarks, del_flag
-        from production_mes2.bas_line
-        limit #{offset}, #{limit}
+              bl.*,bw.shopName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workshop bw
+        where bl.lineName like "%"#{linename}"%"
+        and  bl.del_flag = '0'
+        and bw.id = bl.workshop_id
+        limit #{i}, #{i1}
     </select>
+    <!--查询指定行数据-->
+
+        <select id="queryAllByLimit" resultMap="BasLineMap">
+            select
+              bl.*,bw.shopName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workshop bw
+            where bw.id = bl.workshop_id
+            limit #{offset}, #{limit}
+        </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasLineMap">
@@ -81,8 +94,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_line(lineName, lineNumber, lineMaster, lineDescription, workshop_id, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{linename}, #{linenumber}, #{linemaster}, #{linedescription}, #{workshopId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.bas_line(id,lineName, lineNumber, lineMaster, lineDescription, workshop_id, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{linename}, #{linenumber}, #{linemaster}, #{linedescription}, #{workshopId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

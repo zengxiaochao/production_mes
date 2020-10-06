@@ -53,4 +53,5 @@ public interface BasLineService {
      */
     boolean deleteById(String id);
 
+    List<BasLine> queryByName(int i, int i1, String linename);
 }

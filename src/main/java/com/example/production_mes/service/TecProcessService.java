@@ -53,4 +53,7 @@ public interface TecProcessService {
      */
     boolean deleteById(String id);
 
+    void updateById(String id);
+
+    List<TecProcess> select(String procode);
 }

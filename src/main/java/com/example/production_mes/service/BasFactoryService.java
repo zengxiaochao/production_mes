@@ -53,4 +53,5 @@ public interface BasFactoryService {
      */
     boolean deleteById(String id);
 
+    List<BasFactory> queryByName(int i, int i1, String factoryname);
 }

@@ -63,4 +63,5 @@ public interface BasCellEmployeeDao {
      */
     int deleteById(String id);
 
+    List<BasCellEmployee> queryByName(int i, int i1, String employeename);
 }

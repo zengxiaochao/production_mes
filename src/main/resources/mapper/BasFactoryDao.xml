@@ -17,6 +17,7 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
         <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+        <result property="enterprisename" column="enterName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -26,14 +27,25 @@
         from production_mes2.bas_factory
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasFactoryMap">
+        select
+          bf.*,be.enterName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_enterprise be
+        where bf.enterprise_id = be.id
+        and bf.factoryName like "%"#{factoryname}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasFactoryMap">
         select
-          id, factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag
-        from production_mes2.bas_factory
+          bf.*,be.enterName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_enterprise be
+        where bf.enterprise_id = be.id
         limit #{offset}, #{limit}
     </select>
+
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasFactoryMap">
@@ -89,8 +101,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_factory(factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{factoryname}, #{factorybuilddate}, #{factoryaddress}, #{factoryphone}, #{factoryecode}, #{factorybuildm}, #{enterpriseId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.bas_factory(id,factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id},#{factoryname}, #{factorybuilddate}, #{factoryaddress}, #{factoryphone}, #{factoryecode}, #{factorybuildm}, #{enterpriseId}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

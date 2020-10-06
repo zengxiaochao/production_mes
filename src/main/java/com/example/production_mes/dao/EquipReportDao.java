@@ -20,4 +20,6 @@ public interface EquipReportDao {
     List<EquipReport> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
     List<EquipReport> query(@Param("type")String type,@Param("spec")String spec,@Param("id")String id);
+
+    List<EquipReport> selectBy(String by);
 }

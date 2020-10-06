@@ -80,4 +80,6 @@ public interface EquipFaultReportDao {
      * @return
      */
     List<EquipFaultReport> query(String equip_type, String equip_loc, String status);
+
+    List<EquipFaultReport> selectBy(String by);
 }

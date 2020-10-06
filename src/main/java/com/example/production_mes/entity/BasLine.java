@@ -35,6 +35,19 @@ public class BasLine implements Serializable {
      * 所属车间
      */
     private String workshopId;
+
+    public String getWorkshopname() {
+        return workshopname;
+    }
+
+    public void setWorkshopname(String workshopname) {
+        this.workshopname = workshopname;
+    }
+
+    /**
+     * 所属车间
+     */
+    private String workshopname;
     /**
      * 创建者
      */
@@ -58,7 +71,7 @@ public class BasLine implements Serializable {
     /**
      * 删除标记
      */
-    private String delFlag;
+        private String delFlag;
 
 
     public String getId() {
@@ -157,4 +170,21 @@ public class BasLine implements Serializable {
         this.delFlag = delFlag;
     }
 
+    @Override
+    public String toString() {
+        return "BasLine{" +
+                "id='" + id + '\'' +
+                ", linename='" + linename + '\'' +
+                ", linenumber='" + linenumber + '\'' +
+                ", linemaster='" + linemaster + '\'' +
+                ", linedescription='" + linedescription + '\'' +
+                ", workshopId='" + workshopId + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createDate=" + createDate +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateDate=" + updateDate +
+                ", remarks='" + remarks + '\'' +
+                ", delFlag='" + delFlag + '\'' +
+                '}';
+    }
 }

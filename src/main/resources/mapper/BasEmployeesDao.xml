@@ -20,6 +20,8 @@
         <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+        <result property="officename" column="name" jdbcType="VARCHAR"/>
+
     </resultMap>
 
     <!--查询单个-->
@@ -29,12 +31,22 @@
         from production_mes2.bas_employees
         where id = #{id}
     </select>
-
+    <select id="queryByName" resultMap="BasEmployeesMap">
+        select
+          be.*,bo.name
+        from production_mes2.sys_office bo,
+        production_mes2.bas_employees be
+        where be.officeId = bo.id
+        and be.employeeName like "%"#{employeename}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasEmployeesMap">
         select
-          id, employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date
-        from production_mes2.bas_employees
+          be.*,bo.name
+        from production_mes2.sys_office bo,
+        production_mes2.bas_employees be
+        where be.officeId = bo.id
         limit #{offset}, #{limit}
     </select>
 
@@ -101,8 +113,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_employees(employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date)
-        values (#{employeeno}, #{employeename}, #{workdate}, #{sex}, #{age}, #{telnum}, #{address}, #{email}, #{idcard}, #{officeid}, #{remarks}, #{delFlag}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
+        insert into production_mes2.bas_employees(id, employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date)
+        values (#{id},#{employeeno}, #{employeename}, #{workdate}, #{sex}, #{age}, #{telnum}, #{address}, #{email}, #{idcard}, #{officeid}, #{remarks}, #{delFlag}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
     </insert>
 
     <!--通过主键修改数据-->
