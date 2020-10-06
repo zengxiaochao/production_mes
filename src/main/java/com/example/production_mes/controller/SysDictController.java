@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 字典表(SysDict)表控制层
@@ -33,5 +34,12 @@ public class SysDictController {
     public SysDict selectOne(String id) {
         return this.sysDictService.queryById(id);
     }
+
+
+    @GetMapping("selectBytype")
+    public List<SysDict> selectBytype(String type) {
+        return this.sysDictService.queryBytype(type);
+    }
+
 
 }
