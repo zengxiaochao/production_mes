@@ -41,7 +41,13 @@
         from production_mes2.mount_guard
         limit #{offset}, #{limit}
     </select>
-
+    <select id="queryByName" resultMap="MountGuardMap">
+        select
+          q.*
+        from production_mes2.mount_guard q
+        where q.employeeName like "%"#{employeename}"%"
+        limit #{i}, #{i1}
+    </select>
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="MountGuardMap">
         select

@@ -82,4 +82,9 @@ public class MountGuardServiceImpl implements MountGuardService {
         return this.mountGuardDao.query(type,spec,id);
     }
 
+    @Override
+    public List<MountGuard> queryByName(int i, int i1, String employeename) {
+        return this.mountGuardDao.queryByName(i, i1,employeename);
+    }
+
 }
