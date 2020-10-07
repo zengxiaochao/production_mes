@@ -44,10 +44,4 @@ public class LogCutpiecequalitytestingrecordsController {
         return this.logCutpiecequalitytestingrecordsService.queryAllByLimit(0,1000,startTime,endTime);
     }
 
-
-    @GetMapping("selectAll")
-    public List<LogCutpiecequalitytestingrecords> selectAll(String id) {
-        return this.logCutpiecequalitytestingrecordsService.queryAllByLimit(0,100000);
-    }
-
 }
