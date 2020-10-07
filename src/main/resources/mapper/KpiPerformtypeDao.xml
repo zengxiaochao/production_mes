@@ -73,41 +73,24 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.kpi_performtype(performTypeName, performTypeNum, performTypeUnit, del_flag, remarks, create_by, create_date, update_by, update_date)
-        values (#{performtypename}, #{performtypenum}, #{performtypeunit}, #{delFlag}, #{remarks}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
+        insert into production_mes2.kpi_performtype(id, performTypeName, performTypeNum, performTypeUnit, del_flag, remarks, create_by, create_date, update_by, update_date)
+        values (#{id},#{performtypename}, #{performtypenum}, #{performtypeunit}, #{delFlag}, #{remarks}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update production_mes2.kpi_performtype
         <set>
-            <if test="performtypename != null and performtypename != ''">
+
                 performTypeName = #{performtypename},
-            </if>
-            <if test="performtypenum != null">
+
                 performTypeNum = #{performtypenum},
-            </if>
-            <if test="performtypeunit != null and performtypeunit != ''">
+
                 performTypeUnit = #{performtypeunit},
-            </if>
-            <if test="delFlag != null and delFlag != ''">
-                del_flag = #{delFlag},
-            </if>
-            <if test="remarks != null and remarks != ''">
-                remarks = #{remarks},
-            </if>
-            <if test="createBy != null and createBy != ''">
-                create_by = #{createBy},
-            </if>
-            <if test="createDate != null">
-                create_date = #{createDate},
-            </if>
-            <if test="updateBy != null and updateBy != ''">
+
                 update_by = #{updateBy},
-            </if>
-            <if test="updateDate != null">
+
                 update_date = #{updateDate},
-            </if>
         </set>
         where id = #{id}
     </update>
@@ -116,5 +99,12 @@
     <delete id="deleteById">
         delete from production_mes2.kpi_performtype where id = #{id}
     </delete>
+
+    <select id="search" resultMap="KpiPerformtypeMap">
+        select
+          id, performTypeName, performTypeNum, performTypeUnit, del_flag, remarks, create_by, create_date, update_by, update_date
+        from production_mes2.kpi_performtype
+        where performTypeName = #{desc}
+    </select>
 
 </mapper>

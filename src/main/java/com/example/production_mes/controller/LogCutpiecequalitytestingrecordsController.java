@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.entity.LogChopingbizrecords;
 import com.example.production_mes.entity.LogCutpiecequalitytestingrecords;
 import com.example.production_mes.entity.QcInperfections;
 import com.example.production_mes.service.LogCutpiecequalitytestingrecordsService;
@@ -43,5 +44,10 @@ public class LogCutpiecequalitytestingrecordsController {
         return this.logCutpiecequalitytestingrecordsService.queryAllByLimit(0,1000,startTime,endTime);
     }
 
+
+    @GetMapping("selectAll")
+    public List<LogCutpiecequalitytestingrecords> selectAll(String id) {
+        return this.logCutpiecequalitytestingrecordsService.queryAllByLimit(0,100000);
+    }
 
 }

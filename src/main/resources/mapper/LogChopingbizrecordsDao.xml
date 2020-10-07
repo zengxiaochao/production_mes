@@ -173,4 +173,12 @@
         delete from production_mes2.log_chopingbizrecords where id = #{id}
     </delete>
 
+
+    <select id="search" resultMap="LogChopingbizrecordsMap">
+        select
+          id, cardId, employeeId, employeeName, workCellId, workCellName, equipId, equipName, qrCode, counter, unit, pieces, time, creatorId, createDate, modifer, modifiedDate, remarks
+        from production_mes2.log_chopingbizrecords
+        where employeeName = #{desc}
+    </select>
+
 </mapper>
