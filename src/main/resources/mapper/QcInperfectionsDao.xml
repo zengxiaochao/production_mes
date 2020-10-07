@@ -14,6 +14,8 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
         <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+        <result property="pname" column="productName" jdbcType="VARCHAR"/>
+        <result property="woCode" column="orderCode" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -27,10 +29,29 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="QcInperfectionsMap">
         select
-          id, pn, bn, wo_id, desc, create_by, create_date, update_by, update_date, del_flag, remarks
-        from production_mes2.qc_inperfections
+          qi.*,p.productName,w.orderCode
+        from production_mes2.qc_inperfections qi,
+        production_mes2.bas_product p,
+        production_mes2.bas_workorder w
+        where qi.pn = p.id
+        and qi.wo_id = w.id
+        and qi.del_flag = '1'
         limit #{offset}, #{limit}
     </select>
+    <!--查询指定行数据-->
+    <select id="queryByName" resultMap="QcInperfectionsMap">
+        select
+          qi.*,p.productName,w.orderCode
+        from production_mes2.qc_inperfections qi,
+        production_mes2.bas_product p,
+        production_mes2.bas_workorder w
+        where qi.pn = p.id
+        and qi.wo_id = w.id
+        and qi.del_flag = '1'
+        and p.productName like "%"#{pname}"%"
+        limit #{offset}, #{limit}
+    </select>
+
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="QcInperfectionsMap">
@@ -123,4 +144,14 @@
         delete from production_mes2.qc_inperfections where id = #{id}
     </delete>
 
+    <!--通过主键修改-->
+    <update id="updateById">
+        update production_mes2.qc_inperfections
+        <set>
+            <if test="id != null and id != ''">
+                del_flag = '0',
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

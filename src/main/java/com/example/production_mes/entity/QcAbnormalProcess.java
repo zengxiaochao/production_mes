@@ -17,6 +17,11 @@ public class QcAbnormalProcess implements Serializable {
      * 工序ID
      */
     private String proId;
+
+    /**
+     * 工序
+     */
+    private String proname;
     /**
      * 问题描述
      */
@@ -25,6 +30,11 @@ public class QcAbnormalProcess implements Serializable {
      * 上报人
      */
     private String reportUser;
+
+    /**
+     * 上报人
+     */
+    private String reportUsername;
     /**
      * 上报时间
      */
@@ -34,9 +44,13 @@ public class QcAbnormalProcess implements Serializable {
      */
     private String test;
     /**
-     * 检测人人
+     * 检测人
      */
     private String testUser;
+    /**
+     * 检测人
+     */
+    private String testUsername;
     /**
      * 检测时间
      */
@@ -191,4 +205,27 @@ public class QcAbnormalProcess implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getProname() {
+        return proname;
+    }
+
+    public void setProname(String proname) {
+        this.proname = proname;
+    }
+
+    public String getReportUsername() {
+        return reportUsername;
+    }
+
+    public void setReportUsername(String reportUsername) {
+        this.reportUsername = reportUsername;
+    }
+
+    public String getTestUsername() {
+        return testUsername;
+    }
+
+    public void setTestUsername(String testUsername) {
+        this.testUsername = testUsername;
+    }
 }

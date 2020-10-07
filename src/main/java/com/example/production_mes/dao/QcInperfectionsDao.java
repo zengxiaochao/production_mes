@@ -63,4 +63,20 @@ public interface QcInperfectionsDao {
      */
     int deleteById(String id);
 
+    /**
+     * 通过产品名查询所有数据
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @param pname 对象列表
+     * @return
+     */
+    List<QcInperfections> queryByName(int offset, int limit, String pname);
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    boolean updateById(String id);
 }

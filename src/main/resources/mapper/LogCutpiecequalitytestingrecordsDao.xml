@@ -24,12 +24,14 @@
         <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+        <result property="yield" column="yield" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="LogCutpiecequalitytestingrecordsMap">
         select
-          id, cardId, employeeId, employeeName, workCellId, workCellName, equipId, equipName, qrCode, weight, unit, error, qualified, time, del_flag, remarks, create_by, create_date, update_by, update_date
+          id, cardId, employeeId, employeeName, workCellId, workCellName, equipId, equipName, qrCode, weight, unit, error, qualified, time, del_flag, remarks, create_by, create_date, update_by, update_date,
+        ((count(qualified)-sum(qualified))/count(qualified)) as yield
         from production_mes2.log_cutpiecequalitytestingrecords
         where id = #{id}
     </select>
@@ -37,9 +39,23 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LogCutpiecequalitytestingrecordsMap">
         select
-          id, cardId, employeeId, employeeName, workCellId, workCellName, equipId, equipName, qrCode, weight, unit, error, qualified, time, del_flag, remarks, create_by, create_date, update_by, update_date
-        from production_mes2.log_cutpiecequalitytestingrecords
-        limit #{offset}, #{limit}
+        r.*,
+        ((count(qualified)-sum(qualified))/count(qualified)) as yield
+        from production_mes2.log_cutpiecequalitytestingrecords r
+        <where>
+            <choose>
+                <when test="startTime!=null and startTime!='' and endTime!=null and endTime!=''">
+                    time between #{startTime} and #{endTime}
+                </when>
+                <when test="startTime!=null and startTime!=''">
+                    time &gt;=#{startTime}<!-- 转义> -->
+                </when>
+                <when test="endTime!=null and endTime!=''">
+                    time &lt;=#{endTime}
+                </when>
+            </choose>
+        </where>
+--         group by cardId
     </select>
 
     <!--通过实体作为筛选条件查询-->

@@ -18,6 +18,8 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
         <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+        <result property="proname" column="proName" jdbcType="VARCHAR"/>
+        <result property="reportUsername" column="employeeName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -28,24 +30,30 @@
         where id = #{id}
     </select>
 
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="QcAbnormalProcessMap">
         select
-          id, pro_id, problem, report_user, report_time, test, test_user, test_time, state, create_by, create_date, update_by, update_date, remarks, del_flag
-        from production_mes2.qc_abnormal_process
+          ap.*,be.employeeName,tp.proName
+        from production_mes2.qc_abnormal_process ap,
+        production_mes2.bas_employees be,
+        production_mes2.tec_process tp
+        where be.id = ap.report_user
+        and tp.id = ap.pro_id
+        and ap.del_flag = '1'
         limit #{offset}, #{limit}
     </select>
     <!--查询指定行数据-->
     <select id="queryByName" resultMap="QcAbnormalProcessMap">
         select
-          pf.*,be.employeeName,p.proName
+          ap.*,be.employeeName,tp.proName
         from production_mes2.qc_abnormal_process ap,
         production_mes2.bas_employees be,
-        production_mes2.tec_process p
+        production_mes2.tec_process tp
         where be.id = ap.report_user
-        and p.id = ap.pro_id
-        and pf.del_flag = '1'
-        and f.flowName like "%"#{flowname}"%"
+        and tp.id = ap.pro_id
+        and ap.del_flag = '1'
+        and tp.proName like "%"#{proname}"%"
         limit #{offset}, #{limit}
     </select>
 

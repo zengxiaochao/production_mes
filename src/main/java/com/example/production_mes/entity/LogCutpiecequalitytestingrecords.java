@@ -17,6 +17,7 @@ public class LogCutpiecequalitytestingrecords implements Serializable {
      * 员工工号
      */
     private String cardid;
+    private String yield;
 
     private String employeeid;
 
@@ -56,6 +57,13 @@ public class LogCutpiecequalitytestingrecords implements Serializable {
 
     private Date updateDate;
 
+    public String getYield() {
+        return yield;
+    }
+
+    public void setYield(String yield) {
+        this.yield = yield;
+    }
 
     public String getId() {
         return id;
