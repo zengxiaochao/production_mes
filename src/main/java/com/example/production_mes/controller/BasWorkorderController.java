@@ -65,7 +65,7 @@ public class BasWorkorderController {
         basWorkorder.setOrdercode(map.get("orderno"));
 
         basWorkorder.setUnitname(map.get("unitName"));
-        basWorkorder.setOrdertype(map.get("orderType"));
+        basWorkorder.setOrdertype(map.get("value1"));
         basWorkorder.setAmount(map.get("amount"));
         basWorkorder.setEststarttime(map.get("estStartTime"));
         basWorkorder.setEstendtime(map.get("estEndTime"));
@@ -74,7 +74,7 @@ public class BasWorkorderController {
         basWorkorder.setAmount(map.get("cellDescription"));
         basWorkorder.setOutamount(map.get("outAmount"));
         basWorkorder.setScrapamount(Integer.valueOf(map.get("scrapAmount")));
-        basWorkorder.setState(map.get("1231"));
+        basWorkorder.setState(map.get("value2"));
         basWorkorder.setProductId("1099999923123");
         basWorkorder.setLineId("12321312");
         basWorkorder.setRemarks("12312312");
