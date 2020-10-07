@@ -63,4 +63,5 @@ public interface BasWorkorderDao {
      */
     int deleteById(String id);
 
+    List<BasWorkorder> queryByName(int i, int i1, String ordercode);
 }

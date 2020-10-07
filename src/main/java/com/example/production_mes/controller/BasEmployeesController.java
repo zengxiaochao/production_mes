@@ -94,7 +94,7 @@ public class BasEmployeesController {
         basEmployees.setAddress(map.get("address"));
         basEmployees.setEmail(map.get("email"));
         basEmployees.setIdcard(map.get("idcard"));
-        basEmployees.setOfficeid(map.get("officeid"));
+        basEmployees.setOfficeid(map.get("officeId"));
         basEmployees.setRemarks(map.get("remarks"));
         basEmployees = basEmployeesService.update(basEmployees);
         return Result.success("修改成功");

@@ -61,24 +61,26 @@ public class BasProductController {
     }
 
     @RequestMapping(value="/edit")
-    public Result edit(@RequestBody HashMap<String, String> map
-    ) {
+    public Result edit(@RequestBody HashMap<String, String> map) {
 
         BasProduct basProduct = new BasProduct();
-        basProduct.setId(map.get("id"));
         basProduct.setProductname(map.get("productname"));
-        basProduct.setFirstcheck(map.get("firstcheck"));
-        basProduct.setCreateBy(map.get("creatby"));
-        basProduct.setLotnumber(map.get("lotnumber"));
-        basProduct.setFlowId(map.get("flowid"));
         basProduct.setProductabbr(map.get("productabbr"));
+        basProduct.setProductdesc(map.get("productdesc"));
+        basProduct.setFirstcheck(map.get("firstcheck"));
+        basProduct.setQrcode(map.get("qrcode"));
         basProduct.setManageway(map.get("manageway"));
-
-        System.out.println(map.get("firstcheck"));
-
+        basProduct.setLotnumber(map.get("lotnumber"));
+        basProduct.setProductunit(map.get("productunit"));
+        basProduct.setProductprop(map.get("productprop"));
+        basProduct.setState(map.get("state"));
+        basProduct.setFlowId(map.get("flowid"));
+        basProduct.setId(map.get("id"));
+        basProduct.setLotnumber(map.get("lotnumber"));
+        basProduct.setUpdateBy(map.get("reportPerson"));
+        basProduct.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         basProductService.update(basProduct);
         return Result.success("修改成功");
-
     }
 
     @GetMapping("deleteById")
@@ -87,29 +89,59 @@ public class BasProductController {
         basProductService.deleteById(id);
         return Result.success("删除成功");
     }
+
+
+
+
+
+
     @RequestMapping(value="/add")
-    public Result add(@RequestBody HashMap<String, String> map
-    ) {
+    public Result add(@RequestBody HashMap<String, String> map) {
 
         BasProduct basProduct = new BasProduct();
         basProduct.setId(IDGenerator.generateUUID());
+
         basProduct.setProductname(map.get("productname"));
+        basProduct.setProductabbr(map.get("productabbr"));
+        basProduct.setProductdesc(map.get("productdesc"));
         basProduct.setFirstcheck(map.get("firstcheck"));
+        basProduct.setQrcode(map.get("qrcode"));
+        basProduct.setManageway(map.get("manageway"));
+        basProduct.setLotnumber(map.get("lotnumber"));
+        basProduct.setProductunit(map.get("productunit"));
+        basProduct.setProductprop(map.get("productprop"));
+        basProduct.setFlowId(map.get("flowid"));
+        basProduct.setState(map.get("state"));
+
+
         basProduct.setCreateBy(map.get("creatby"));
         basProduct.setLotnumber(map.get("lotnumber"));
-        basProduct.setFlowId(map.get("flowid"));
-        basProduct.setProductabbr(map.get("productabbr"));
-        basProduct.setManageway(map.get("manageway"));
         basProduct.setCreateBy(map.get("reportPerson"));
         basProduct.setUpdateBy(map.get("reportPerson"));
+
+
         basProduct.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         basProduct.setCreateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         basProduct.setDelFlag("0");
-        basProduct.setId(IDGenerator.generateUUID());
-        System.out.println(IDGenerator.generateUUID());
+
+
         basProductService.insert(basProduct);
 
         return Result.success("添加成功");
+    }
+    @GetMapping("search")
+    public List<BasProduct> search(String select,String desc) {
+        if (select.equals("qrcode")) {
+            System.out.println("qrcode");
+            System.out.println(desc);
+            return basProductService.search_qrcode(desc);
+        }
+        else if (select.equals("name")) {
+            return basProductService.search_name(desc);
+        }
+        else{
+            return null;
+        }
     }
 
 

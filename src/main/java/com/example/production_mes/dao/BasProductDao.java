@@ -63,4 +63,12 @@ public interface BasProductDao {
      */
     int deleteById(String id);
 
+    List<BasProduct> query_qrcode(String qrcode);
+
+
+
+    List<BasProduct> query_name(String name);
+
+
+
 }

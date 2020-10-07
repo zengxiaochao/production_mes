@@ -33,9 +33,11 @@
     </select>
     <select id="queryByName" resultMap="BasEmployeesMap">
         select
-          q.*
-        from production_mes2.bas_employees q
-        where q.employeeName like "%"#{employeename}"%"
+          be.*,bo.name
+        from production_mes2.sys_office bo,
+        production_mes2.bas_employees be
+        where be.officeId = bo.id
+        and be.employeeName like "%"#{employeename}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->

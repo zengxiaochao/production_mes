@@ -53,4 +53,16 @@ public interface SysDictService {
      */
     boolean deleteById(String id);
 
+    /**
+
+    * create by weizhipeng
+    * Time at 2020/10/6
+    * description:
+    * @return
+    * @param
+
+    */
+
+    List<SysDict> queryBytype(String type);
+
 }

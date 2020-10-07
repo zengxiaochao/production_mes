@@ -35,10 +35,12 @@
             limit #{offset}, #{limit}
         </select>
     <select id="queryByName" resultMap="BasWorkstationinfosMap">
-        select
-          q.*
-        from production_mes2.bas_workstationinfos q
-        where q.stationName like "%"#{stationname}"%"
+         select
+              bws.*,bl.lineName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workstationinfos bws
+            where bl.id = bws.line_id
+        and bws.stationName like "%"#{stationname}"%"
         limit #{i}, #{i1}
     </select>
     <!--通过实体作为筛选条件查询-->

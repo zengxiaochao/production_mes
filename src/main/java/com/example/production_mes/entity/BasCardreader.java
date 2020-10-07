@@ -136,6 +136,15 @@ public class BasCardreader implements Serializable {
      */
     private String id;
 
+    /**
+     * 工位
+     */
+    private String cellname;
+    /**
+     * 工站
+     */
+    private String stationname;
+
 
     public String getQrcode() {
         return qrcode;
@@ -385,4 +394,19 @@ public class BasCardreader implements Serializable {
         this.id = id;
     }
 
+    public String getCellname() {
+        return cellname;
+    }
+
+    public void setCellname(String cellname) {
+        this.cellname = cellname;
+    }
+
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
 }

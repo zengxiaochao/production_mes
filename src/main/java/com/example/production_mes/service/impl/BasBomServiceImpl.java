@@ -2,6 +2,7 @@ package com.example.production_mes.service.impl;
 
 import com.example.production_mes.dao.BasBomDao;
 import com.example.production_mes.entity.BasBom;
+import com.example.production_mes.entity.BasBomList;
 import com.example.production_mes.service.BasBomService;
 import org.springframework.stereotype.Service;
 
@@ -76,4 +77,19 @@ public class BasBomServiceImpl implements BasBomService {
     public boolean deleteById(String id) {
         return this.basBomDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasBom> queryname(String name) {
+        return basBomDao.queryname(name);
+    }
+
+    @Override
+    public List<BasBomList> queryAll() {
+        return this.basBomDao.queryAll();
+    }
+
+
+
+
+
 }

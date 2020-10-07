@@ -173,4 +173,19 @@
         delete from production_mes2.bas_product where id = #{id}
     </delete>
 
+    <select id="query_qrcode" resultMap="BasProductMap">
+        select
+          id, productName, productAbbr, productDesc, firstCheck, qrCode, manageWay, lotNumber, state, productUnit, productProp, flow_id, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.bas_product
+        where qrCode = #{qrcode]}
+    </select>
+
+
+    <select id="query_name" resultMap="BasProductMap">
+        select
+          id, productName, productAbbr, productDesc, firstCheck, qrCode, manageWay, lotNumber, state, productUnit, productProp, flow_id, create_by, create_date, update_by, update_date, remarks, del_flag
+        from production_mes2.bas_product
+        where productName = #{name]}
+    </select>
+
 </mapper>

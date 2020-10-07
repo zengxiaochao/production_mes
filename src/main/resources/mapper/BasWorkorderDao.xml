@@ -5,6 +5,8 @@
     <resultMap type="com.example.production_mes.entity.BasWorkorder" id="BasWorkorderMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="orderId" column="order_id" jdbcType="VARCHAR"/>
+        <result property="linename" column="lineName" jdbcType="VARCHAR"/>
+        <result property="productname" column="productName" jdbcType="VARCHAR"/>
         <result property="ordercode" column="orderCode" jdbcType="VARCHAR"/>
         <result property="unitname" column="unitName" jdbcType="VARCHAR"/>
         <result property="ordertype" column="orderType" jdbcType="VARCHAR"/>
@@ -33,14 +35,32 @@
         from production_mes2.bas_workorder
         where id = #{id}
     </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="BasWorkorderMap">
-        select
-          id, order_id, orderCode, unitName, orderType, amount, estStartTime, estEndTime, actStartTime, inAmount, outAmount, scrapAmount, state, line_id, product_id, del_flag, remarks, create_by, create_date, update_by, update_date
-        from production_mes2.bas_workorder
-        limit #{offset}, #{limit}
+    <select id="queryByName" resultMap="BasWorkorderMap">
+        select  bwo.*,bl.lineName,bp.productName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workorder bwo,
+            production_mes2.bas_product bp
+            where bl.lineNumber = bwo.line_id
+            and bwo.product_id =  bp.qrCode
+            and bwo.orderCode like "%"#{ordercode}"%"
+        limit #{i}, #{i1}
     </select>
+    <!--查询指定行数据-->
+<!--    <select id="queryAllByLimit" resultMap="BasWorkorderMap">-->
+<!--        select-->
+<!--          id, order_id, orderCode, unitName, orderType, amount, estStartTime, estEndTime, actStartTime, inAmount, outAmount, scrapAmount, state, line_id, product_id, del_flag, remarks, create_by, create_date, update_by, update_date-->
+<!--        from production_mes2.bas_workorder-->
+<!--        limit #{offset}, #{limit}-->
+<!--    </select>-->
+    <select id="queryAllByLimit" resultMap="BasWorkorderMap">
+            select  bwo.*,bl.lineName,bp.productName
+            from production_mes2.bas_line bl,
+            production_mes2.bas_workorder bwo,
+            production_mes2.bas_product bp
+            where bl.lineNumber = bwo.line_id
+            and bwo.product_id =  bp.qrCode
+            limit #{offset}, #{limit}
+        </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasWorkorderMap">
@@ -118,8 +138,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_workorder(order_id, orderCode, unitName, orderType, amount, estStartTime, estEndTime, actStartTime, inAmount, outAmount, scrapAmount, state, line_id, product_id, del_flag, remarks, create_by, create_date, update_by, update_date)
-        values (#{orderId}, #{ordercode}, #{unitname}, #{ordertype}, #{amount}, #{eststarttime}, #{estendtime}, #{actstarttime}, #{inamount}, #{outamount}, #{scrapamount}, #{state}, #{lineId}, #{productId}, #{delFlag}, #{remarks}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
+        insert into production_mes2.bas_workorder(id,order_id, orderCode, unitName, orderType, amount, estStartTime, estEndTime, actStartTime, inAmount, outAmount, scrapAmount, state, line_id, product_id, del_flag, remarks, create_by, create_date, update_by, update_date)
+        values (#{id},#{orderId}, #{ordercode}, #{unitname}, #{ordertype}, #{amount}, #{eststarttime}, #{estendtime}, #{actstarttime}, #{inamount}, #{outamount}, #{scrapamount}, #{state}, #{lineId}, #{productId}, #{delFlag}, #{remarks}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate})
     </insert>
 
     <!--通过主键修改数据-->

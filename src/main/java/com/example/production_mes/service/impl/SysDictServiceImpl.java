@@ -76,4 +76,20 @@ public class SysDictServiceImpl implements SysDictService {
     public boolean deleteById(String id) {
         return this.sysDictDao.deleteById(id) > 0;
     }
+
+    /**
+
+    * create by weizhipeng
+    * Time at 2020/10/6
+    * description:
+    * @return List<SysDict
+    * @param type
+
+    */
+    @Override
+    public List<SysDict> queryBytype(String type) {
+        return sysDictDao.queryBytype(type);
+    }
+
+
 }
