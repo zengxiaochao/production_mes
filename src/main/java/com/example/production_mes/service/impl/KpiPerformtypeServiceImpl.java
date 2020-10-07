@@ -76,4 +76,9 @@ public class KpiPerformtypeServiceImpl implements KpiPerformtypeService {
     public boolean deleteById(String id) {
         return this.kpiPerformtypeDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<KpiPerformtype> search(String desc) {
+        return  this.kpiPerformtypeDao.search(desc);
+    }
 }

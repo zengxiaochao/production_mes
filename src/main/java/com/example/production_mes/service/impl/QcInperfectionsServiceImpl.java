@@ -76,4 +76,27 @@ public class QcInperfectionsServiceImpl implements QcInperfectionsService {
     public boolean deleteById(String id) {
         return this.qcInperfectionsDao.deleteById(id) > 0;
     }
+
+    /**
+     * 通过产品名查询所有数据
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @param pname 对象列表
+     * @return
+     */
+    @Override
+    public List<QcInperfections> queryByName(int offset, int limit, String pname) {
+        return this.qcInperfectionsDao.queryByName(offset, limit,pname);
+    }
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    @Override
+    public boolean updateById(String id) {
+        return this.qcInperfectionsDao.updateById(id);
+    }
 }

@@ -53,4 +53,6 @@ public interface KpiPerformtypeService {
      */
     boolean deleteById(String id);
 
+    List<KpiPerformtype>search(String desc);
+
 }

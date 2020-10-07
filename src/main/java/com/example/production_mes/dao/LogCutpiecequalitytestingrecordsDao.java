@@ -28,7 +28,7 @@ public interface LogCutpiecequalitytestingrecordsDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<LogCutpiecequalitytestingrecords> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<LogCutpiecequalitytestingrecords> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit,String startTime, String endTime);
 
 
     /**

@@ -53,4 +53,6 @@ public interface LogChopingbizrecordsService {
      */
     boolean deleteById(String id);
 
+    List<LogChopingbizrecords> search(String desc);
+
 }

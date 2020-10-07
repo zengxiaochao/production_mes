@@ -27,7 +27,7 @@ public interface LogCutpiecequalitytestingrecordsService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<LogCutpiecequalitytestingrecords> queryAllByLimit(int offset, int limit);
+    List<LogCutpiecequalitytestingrecords> queryAllByLimit(int offset, int limit,String startTime, String endTime);
 
     /**
      * 新增数据

@@ -38,8 +38,8 @@ public class LogCutpiecequalitytestingrecordsServiceImpl implements LogCutpieceq
      * @return 对象列表
      */
     @Override
-    public List<LogCutpiecequalitytestingrecords> queryAllByLimit(int offset, int limit) {
-        return this.logCutpiecequalitytestingrecordsDao.queryAllByLimit(offset, limit);
+    public List<LogCutpiecequalitytestingrecords> queryAllByLimit(int offset, int limit,String startTime, String endTime) {
+        return this.logCutpiecequalitytestingrecordsDao.queryAllByLimit(offset, limit,startTime, endTime);
     }
 
     /**
@@ -76,4 +76,6 @@ public class LogCutpiecequalitytestingrecordsServiceImpl implements LogCutpieceq
     public boolean deleteById(String id) {
         return this.logCutpiecequalitytestingrecordsDao.deleteById(id) > 0;
     }
+
+
 }

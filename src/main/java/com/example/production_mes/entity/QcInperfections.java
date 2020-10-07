@@ -18,13 +18,22 @@ public class QcInperfections implements Serializable {
      */
     private String pn;
     /**
+     * 产品名称
+     */
+    private String pname;
+
+    /**
      * 批次编号
      */
     private String bn;
     /**
-     * 工单编号
+     * 工单id
      */
     private String woId;
+    /**
+     * 工单编号
+     */
+    private String woCode;
 
     private String desc;
 
@@ -129,4 +138,19 @@ public class QcInperfections implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getWoCode() {
+        return woCode;
+    }
+
+    public void setWoCode(String woCode) {
+        this.woCode = woCode;
+    }
 }
