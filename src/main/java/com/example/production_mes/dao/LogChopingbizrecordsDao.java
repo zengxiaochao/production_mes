@@ -63,4 +63,6 @@ public interface LogChopingbizrecordsDao {
      */
     int deleteById(String id);
 
+    List<LogChopingbizrecords> search(String desc);
+
 }

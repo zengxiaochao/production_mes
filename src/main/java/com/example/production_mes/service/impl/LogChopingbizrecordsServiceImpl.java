@@ -76,4 +76,9 @@ public class LogChopingbizrecordsServiceImpl implements LogChopingbizrecordsServ
     public boolean deleteById(String id) {
         return this.logChopingbizrecordsDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<LogChopingbizrecords> search(String desc) {
+        return logChopingbizrecordsDao.search(desc);
+    }
 }

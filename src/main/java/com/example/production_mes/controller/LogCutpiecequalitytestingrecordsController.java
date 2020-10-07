@@ -1,5 +1,6 @@
 package com.example.production_mes.controller;
 
+import com.example.production_mes.entity.LogChopingbizrecords;
 import com.example.production_mes.entity.LogCutpiecequalitytestingrecords;
 import com.example.production_mes.service.LogCutpiecequalitytestingrecordsService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (LogCutpiecequalitytestingrecords)表控制层
@@ -32,6 +34,11 @@ public class LogCutpiecequalitytestingrecordsController {
     @GetMapping("selectOne")
     public LogCutpiecequalitytestingrecords selectOne(String id) {
         return this.logCutpiecequalitytestingrecordsService.queryById(id);
+    }
+
+    @GetMapping("selectAll")
+    public List<LogCutpiecequalitytestingrecords> selectAll(String id) {
+        return this.logCutpiecequalitytestingrecordsService.queryAllByLimit(0,100000);
     }
 
 }

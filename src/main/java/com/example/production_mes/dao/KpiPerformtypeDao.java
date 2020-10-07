@@ -63,4 +63,6 @@ public interface KpiPerformtypeDao {
      */
     int deleteById(String id);
 
+    List<KpiPerformtype> search(String desc);
+
 }

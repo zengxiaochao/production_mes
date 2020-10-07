@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (LogChopingbizrecords)表控制层
@@ -32,6 +33,18 @@ public class LogChopingbizrecordsController {
     @GetMapping("selectOne")
     public LogChopingbizrecords selectOne(String id) {
         return this.logChopingbizrecordsService.queryById(id);
+    }
+
+
+    @GetMapping("selectAll")
+    public List<LogChopingbizrecords> selectAll(String id) {
+        return this.logChopingbizrecordsService.queryAllByLimit(0,100000);
+    }
+
+
+    @GetMapping("search")
+    public List<LogChopingbizrecords> search(String desc) {
+        return this.logChopingbizrecordsService.search(desc);
     }
 
 }
