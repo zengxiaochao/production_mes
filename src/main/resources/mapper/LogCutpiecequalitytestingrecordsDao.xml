@@ -41,7 +41,8 @@
         select
         cardId,
         workCellId,
-        ((count(qualified)-sum(qualified))/count(qualified)) as yield
+        employeeName,
+        (((count(qualified)-sum(qualified))*100)/count(qualified)) as yield
         from production_mes2.log_cutpiecequalitytestingrecords
         <where>
             <choose>
