@@ -27,9 +27,19 @@ public class Orders implements Serializable {
      * 姓名
      */
     private String productId;
+
+    public String getProductname() {
+        return productname;
+    }
+
+    public void setProductname(String productname) {
+        this.productname = productname;
+    }
+
     /**
      * 所属部门
      */
+    private String productname;
     private Integer quantity;
     /**
      * 所属产线

@@ -61,7 +61,7 @@ public class SysUserController {
             return Result.error("账号或密码错误");
         }
         String LoginIp = sysUser.getLoginIp();
-        Date LoginDate = sysUser.getLoginDate();
+        Date LoginDate = sysUser.getLoginDate();    
         updataTimeIp(sysUser,request);
         sysUser.setLoginIp(LoginIp);
         sysUser.setLoginDate(LoginDate);

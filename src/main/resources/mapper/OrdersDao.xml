@@ -7,6 +7,7 @@
         <result property="orderno" column="orderNo" jdbcType="VARCHAR"/>
         <result property="indentor" column="indentor" jdbcType="VARCHAR"/>
         <result property="productId" column="product_id" jdbcType="VARCHAR"/>
+        <result property="productname" column="productName" jdbcType="VARCHAR"/>
         <result property="quantity" column="quantity" jdbcType="INTEGER"/>
         <result property="unit" column="unit" jdbcType="VARCHAR"/>
         <result property="orderdate" column="orderDate" jdbcType="TIMESTAMP"/>
@@ -37,11 +38,13 @@
     </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="OrdersMap">
-        select
-          id, orderNo, indentor, product_id, quantity, unit, orderDate, salesman, status, del_flag, remarks, create_by, create_date, update_by, update_date
-        from production_mes2.orders
-        limit #{offset}, #{limit}
-    </select>
+            select  o.*,bp.productName
+            from production_mes2.orders o,
+            production_mes2.bas_product bp
+            where o.product_id = bp.qrCode
+            limit #{offset}, #{limit}
+        </select>
+
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="OrdersMap">
