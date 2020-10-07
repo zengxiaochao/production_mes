@@ -7,10 +7,7 @@ import com.example.production_mes.entity.BasWorkorder;
 import com.example.production_mes.service.BasWorkorderService;
 import com.example.production_mes.utils.IDGenerator;
 import com.example.production_mes.utils.TimeUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -89,5 +86,34 @@ public class BasWorkorderController {
         basWorkorderService.insert(basWorkorder);
         return Result.success("添加成功");
     }
+    @RequestMapping(value="/edit")
+    public Result edit(@RequestBody HashMap<String, String> map
+    ) {
+        BasWorkorder basWorkorder = new BasWorkorder();
+        basWorkorder.setId(IDGenerator.generateIDByDateStr());
+//        System.out.println(basWorkorder.getId());
+        basWorkorder.setOrderId(map.get("orderno"));
+        basWorkorder.setOrdercode(map.get("orderno"));
+        basWorkorder.setUnitname(map.get("unitname"));
+        basWorkorder.setOrdertype(map.get("value1"));
+        basWorkorder.setAmount(map.get("amount"));
+//        basWorkorder.setEststarttime(map.get("eststarttime"));
+        basWorkorder.setEstendtime(map.get("estendTime"));
+        basWorkorder.setActstarttime(map.get("actstarttime"));
+        basWorkorder.setEststarttime(map.get("eststartTime"));
+//        basWorkorder.setAmount(map.get("cellDescription"));
+        basWorkorder.setOutamount(map.get("outamount"));
+//        basWorkorder.setOutamount(map.get("outamount"));
+        basWorkorder.setState(map.get("value2"));
+        basWorkorder = basWorkorderService.update(basWorkorder);
+        return Result.success("修改成功");
+    }
+    @RequestMapping(value="/edit2",method= RequestMethod.POST)
+    public Result edit2(@ModelAttribute BasWorkorder basWorkorder) {
+        System.out.println(basWorkorder.toString());
+        basWorkorderService.update(basWorkorder);
+        return Result.success("修改成功");
+    }
+
 
 }
