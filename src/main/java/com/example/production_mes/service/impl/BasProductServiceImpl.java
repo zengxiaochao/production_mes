@@ -79,4 +79,16 @@ public class BasProductServiceImpl implements BasProductService {
 
         return this.basProductDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<BasProduct> search_qrcode(String qrcode) {
+        return basProductDao.query_qrcode(qrcode);
+    }
+
+    @Override
+    public List<BasProduct> search_name(String name) {
+        return basProductDao.query_name(name);
+    }
+
+
 }

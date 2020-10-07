@@ -20,6 +20,8 @@
         <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+        <result property="officename" column="name" jdbcType="VARCHAR"/>
+
     </resultMap>
 
     <!--查询单个-->
@@ -31,16 +33,20 @@
     </select>
     <select id="queryByName" resultMap="BasEmployeesMap">
         select
-          q.*
-        from production_mes2.bas_employees q
-        where q.employeeName like "%"#{employeename}"%"
+          be.*,bo.name
+        from production_mes2.sys_office bo,
+        production_mes2.bas_employees be
+        where be.officeId = bo.id
+        and be.employeeName like "%"#{employeename}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasEmployeesMap">
         select
-          id, employeeNo, employeeName, workDate, sex, age, telNUm, address, email, idCard, officeId, remarks, del_flag, create_by, create_date, update_by, update_date
-        from production_mes2.bas_employees
+          be.*,bo.name
+        from production_mes2.sys_office bo,
+        production_mes2.bas_employees be
+        where be.officeId = bo.id
         limit #{offset}, #{limit}
     </select>
 

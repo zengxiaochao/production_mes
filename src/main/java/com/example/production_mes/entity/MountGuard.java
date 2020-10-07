@@ -19,12 +19,25 @@ public class MountGuard implements Serializable {
      * 员工ID
      */
     private String employeeId;
+
+    public String getOfficename() {
+        return officename;
+    }
+
+    public void setOfficename(String officename) {
+        this.officename = officename;
+    }
+
     /**
      * 员工工号
      */
     private String employeeno;
 
     private String employeename;
+    /**
+     * 所属部门
+     */
+    private String officename;
     /**
      * 所属部门
      */

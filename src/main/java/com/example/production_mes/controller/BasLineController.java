@@ -82,7 +82,7 @@ public class BasLineController {
     ) {
         BasLine basLine = new BasLine();
         basLine.setId(map.get("id"));
-        basLine.setWorkshopId(map.get("workshopId"));
+        basLine.setWorkshopId(map.get("workshopid"));
         basLine.setLinename(map.get("linename"));
         basLine.setLinenumber(map.get("linenumber"));
         basLine.setLinemaster(map.get("linemaster"));
@@ -100,7 +100,7 @@ public class BasLineController {
         BasLine BasLine = new BasLine();
         BasLine.setId(IDGenerator.generateIDByDateStr());
         System.out.println(BasLine.getId());
-        BasLine.setWorkshopId(map.get("workshop_id"));
+        BasLine.setWorkshopId(map.get("workshopid"));
         BasLine.setLinename(map.get("lineName"));
         BasLine.setLinenumber(map.get("lineNumber"));
         BasLine.setLinemaster(map.get("lineMaster"));

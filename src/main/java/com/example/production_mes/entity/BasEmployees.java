@@ -55,6 +55,19 @@ public class BasEmployees implements Serializable {
      * 所属部门
      */
     private String officeid;
+
+    public String getOfficename() {
+        return officename;
+    }
+
+    public void setOfficename(String officename) {
+        this.officename = officename;
+    }
+
+    /**
+     * 备注
+     */
+    private String officename;
     /**
      * 备注
      */

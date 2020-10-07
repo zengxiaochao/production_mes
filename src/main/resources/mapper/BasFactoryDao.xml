@@ -17,6 +17,7 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
         <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
         <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+        <result property="enterprisename" column="enterName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -28,18 +29,23 @@
     </select>
     <select id="queryByName" resultMap="BasFactoryMap">
         select
-          q.*
-        from production_mes2.bas_factory q
-        where q.factoryName like "%"#{factoryname}"%"
+          bf.*,be.enterName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_enterprise be
+        where bf.enterprise_id = be.id
+        and bf.factoryName like "%"#{factoryname}"%"
         limit #{i}, #{i1}
     </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasFactoryMap">
         select
-          id, factoryName, factoryBuildDate, factoryAddress, factoryPhone, factoryECode, factoryBuildM, enterprise_id, create_by, create_date, update_by, update_date, remarks, del_flag
-        from production_mes2.bas_factory
+          bf.*,be.enterName
+        from production_mes2.bas_factory bf,
+        production_mes2.bas_enterprise be
+        where bf.enterprise_id = be.id
         limit #{offset}, #{limit}
     </select>
+
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BasFactoryMap">

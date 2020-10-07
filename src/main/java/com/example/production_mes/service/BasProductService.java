@@ -53,4 +53,7 @@ public interface BasProductService {
      */
     boolean deleteById(String id);
 
+    List<BasProduct> search_qrcode(String qrcode);
+    List<BasProduct> search_name(String name);
+
 }

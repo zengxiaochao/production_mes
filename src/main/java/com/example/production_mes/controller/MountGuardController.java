@@ -1,6 +1,7 @@
 package com.example.production_mes.controller;
 
 import com.example.production_mes.entity.BasEmployees;
+import com.example.production_mes.entity.BasWorkcell;
 import com.example.production_mes.entity.EquipReport;
 import com.example.production_mes.entity.MountGuard;
 import com.example.production_mes.service.MountGuardService;
@@ -66,5 +67,11 @@ public class MountGuardController {
 //        System.out.println(cspec);
 //        System.out.println(id);
         return this.mountGuardService.query(type,spec,id);
+    }
+
+
+    @GetMapping("selectByName")
+    public List<MountGuard>  selectByName(String employeename) {
+        return this.mountGuardService.queryByName(0,1000,employeename);
     }
 }

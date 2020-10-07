@@ -152,4 +152,7 @@
         delete from production_mes2.material where id = #{id}
     </delete>
 
+
+
+
 </mapper>

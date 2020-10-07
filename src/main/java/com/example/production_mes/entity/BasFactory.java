@@ -44,6 +44,10 @@ public class BasFactory implements Serializable {
      */
     private String enterpriseId;
     /**
+     * 企业名称
+     */
+    private String enterprisename;
+    /**
      * 创建者
      */
     private String createBy;
@@ -181,4 +185,11 @@ public class BasFactory implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getEnterprisename() {
+        return enterprisename;
+    }
+
+    public void setEnterprisename(String enterprisename) {
+        this.enterprisename = enterprisename;
+    }
 }

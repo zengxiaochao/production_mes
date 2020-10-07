@@ -23,6 +23,7 @@
         <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
         <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="officename" column="name" jdbcType="VARCHAR"/>
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
     </resultMap>
 
@@ -36,12 +37,20 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="MountGuardMap">
+            select
+              mg.*,bo.name
+            from production_mes2.mount_guard mg,
+            production_mes2.sys_office bo
+            where bo.id = mg.office_id
+            limit #{offset}, #{limit}
+        </select>
+    <select id="queryByName" resultMap="MountGuardMap">
         select
-          id, employee_id, employeeNo, employeeName, office_id, line_id, lineName, station_id, stationName, cell_id, cellName, clockIn, clockOff, workTime, workStatus, del_flag, remarks, create_by, create_date, update_by, update_date
-        from production_mes2.mount_guard
-        limit #{offset}, #{limit}
+          q.*
+        from production_mes2.mount_guard q
+        where q.employeeName like "%"#{employeename}"%"
+        limit #{i}, #{i1}
     </select>
-
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="MountGuardMap">
         select

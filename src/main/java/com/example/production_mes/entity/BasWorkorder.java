@@ -34,19 +34,19 @@ public class BasWorkorder implements Serializable {
     /**
      * 工单生产数量
      */
-    private Integer amount;
+    private String amount;
     /**
      * 预计生产时间
      */
-    private Date eststarttime;
+    private String eststarttime;
     /**
      * 预计结束时间
      */
-    private Date estendtime;
+    private String estendtime;
     /**
      * 实际生产时间
      */
-    private Date actstarttime;
+    private String actstarttime;
     /**
      * 投入数量
      */
@@ -54,7 +54,7 @@ public class BasWorkorder implements Serializable {
     /**
      * 产出数量
      */
-    private Integer outamount;
+    private String outamount;
     /**
      * 报废数量
      */
@@ -91,6 +91,25 @@ public class BasWorkorder implements Serializable {
      * 更新者
      */
     private String updateBy;
+    private String productname;
+    private String linename;
+
+    public String getProductname() {
+        return productname;
+    }
+
+    public void setProductname(String productname) {
+        this.productname = productname;
+    }
+
+    public String getLinename() {
+        return linename;
+    }
+
+    public void setLinename(String linename) {
+        this.linename = linename;
+    }
+
     /**
      * 更新日期
      */
@@ -137,35 +156,35 @@ public class BasWorkorder implements Serializable {
         this.ordertype = ordertype;
     }
 
-    public Integer getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public Date getEststarttime() {
+    public String getEststarttime() {
         return eststarttime;
     }
 
-    public void setEststarttime(Date eststarttime) {
+    public void setEststarttime(String eststarttime) {
         this.eststarttime = eststarttime;
     }
 
-    public Date getEstendtime() {
+    public String getEstendtime() {
         return estendtime;
     }
 
-    public void setEstendtime(Date estendtime) {
+    public void setEstendtime(String estendtime) {
         this.estendtime = estendtime;
     }
 
-    public Date getActstarttime() {
+    public String getActstarttime() {
         return actstarttime;
     }
 
-    public void setActstarttime(Date actstarttime) {
+    public void setActstarttime(String actstarttime) {
         this.actstarttime = actstarttime;
     }
 
@@ -177,11 +196,11 @@ public class BasWorkorder implements Serializable {
         this.inamount = inamount;
     }
 
-    public Integer getOutamount() {
+    public String getOutamount() {
         return outamount;
     }
 
-    public void setOutamount(Integer outamount) {
+    public void setOutamount(String outamount) {
         this.outamount = outamount;
     }
 

@@ -45,8 +45,13 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BasIphotoMap">
         select
-          qrCode, type, spec, cell_id, station_id, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, iphotoDistance, iphotoWay, workEnvironment, create_by, create_date, update_by, update_date, remarks, del_flag, id
-        from production_mes2.bas_iphoto
+          bp.*,ws.stationName,bw.cellName
+        from production_mes2.bas_iphoto bp,
+        production_mes2.bas_workstationinfos ws,
+        production_mes2.bas_workcell bw
+        where bp.del_flag='0'
+        and bp.station_id = ws.id
+        and bp.cell_id = bw.id
         limit #{offset}, #{limit}
     </select>
 
@@ -150,8 +155,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into production_mes2.bas_iphoto(qrCode, type, spec, cell_id, station_id, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, iphotoDistance, iphotoWay, workEnvironment, create_by, create_date, update_by, update_date, remarks, del_flag)
-        values (#{qrcode}, #{type}, #{spec}, #{cellId}, #{stationId}, #{supplier}, #{manufacturer}, #{factorynumber}, #{purpose}, #{buydate}, #{person}, #{organization}, #{ip}, #{combaudrate}, #{comdataseat}, #{combegin}, #{comend}, #{checkmode}, #{sysparam}, #{iphotodistance}, #{iphotoway}, #{workenvironment}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
+        insert into production_mes2.bas_iphoto(id, qrCode, type, spec, cell_id, station_id, supplier, manufacturer, factoryNumber, purpose, buyDate, person, organization, ip, comBaudrate, comDataseat, comBegin, comEnd, checkMode, sysParam, iphotoDistance, iphotoWay, workEnvironment, create_by, create_date, update_by, update_date, remarks, del_flag)
+        values (#{id}, #{qrcode}, #{type}, #{spec}, #{cellId}, #{stationId}, #{supplier}, #{manufacturer}, #{factorynumber}, #{purpose}, #{buydate}, #{person}, #{organization}, #{ip}, #{combaudrate}, #{comdataseat}, #{combegin}, #{comend}, #{checkmode}, #{sysparam}, #{iphotodistance}, #{iphotoway}, #{workenvironment}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag})
     </insert>
 
     <!--通过主键修改数据-->

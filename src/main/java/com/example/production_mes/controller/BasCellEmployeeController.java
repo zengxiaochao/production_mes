@@ -44,7 +44,10 @@ public class BasCellEmployeeController {
     public List<BasCellEmployee> selectAll() {
         return this.basCellEmployeeService.queryAllByLimit(0,1000);
     }
-
+    @GetMapping("selectByName")
+    public List<BasCellEmployee>  selectByName(String employeename) {
+        return this.basCellEmployeeService.queryByName(0,1000,employeename);
+    }
     @GetMapping("deleteById")
     public Result deleteById(String id) {
         System.out.println(id);
@@ -83,8 +86,8 @@ public class BasCellEmployeeController {
     ) {
         BasCellEmployee BasCellEmployee = new BasCellEmployee();
         BasCellEmployee.setId(map.get("id"));
-        BasCellEmployee.setEmployeeId(map.get("employeeId"));
-        BasCellEmployee.setCellId(map.get("cellId"));
+        BasCellEmployee.setEmployeeId(map.get("employee_id"));
+        BasCellEmployee.setCellId(map.get("cell_id"));
         BasCellEmployee.setRemarks(map.get("remarks"));
         BasCellEmployee.setUpdateDate(TimeUtils.StringToDate(TimeUtils.NowTime()));
         BasCellEmployee = basCellEmployeeService.update(BasCellEmployee);

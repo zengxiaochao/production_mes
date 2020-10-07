@@ -128,6 +128,15 @@ public class BasElectronsteelyard implements Serializable {
      */
     private String id;
 
+    /**
+     * 所属工位名称
+     */
+    private String cellname;
+    /**
+     * 所属工站名称
+     */
+    private String stationname;
+
 
     public String getQrcode() {
         return qrcode;
@@ -361,4 +370,19 @@ public class BasElectronsteelyard implements Serializable {
         this.id = id;
     }
 
+    public String getCellname() {
+        return cellname;
+    }
+
+    public void setCellname(String cellname) {
+        this.cellname = cellname;
+    }
+
+    public String getStationname() {
+        return stationname;
+    }
+
+    public void setStationname(String stationname) {
+        this.stationname = stationname;
+    }
 }

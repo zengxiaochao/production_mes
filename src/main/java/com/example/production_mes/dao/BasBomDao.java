@@ -1,6 +1,7 @@
 package com.example.production_mes.dao;
 
 import com.example.production_mes.entity.BasBom;
+import com.example.production_mes.entity.BasBomList;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -62,5 +63,9 @@ public interface BasBomDao {
      * @return 影响行数
      */
     int deleteById(String id);
+
+    List<BasBomList> queryAll();
+
+    List<BasBom> queryname(String name);
 
 }

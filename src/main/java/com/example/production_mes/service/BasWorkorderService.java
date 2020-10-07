@@ -53,4 +53,5 @@ public interface BasWorkorderService {
      */
     boolean deleteById(String id);
 
+    List<BasWorkorder> queryByName(int i, int i1, String ordercode);
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (BasBomDetail)表控制层
@@ -32,6 +33,11 @@ public class BasBomDetailController {
     @GetMapping("selectOne")
     public BasBomDetail selectOne(String id) {
         return this.basBomDetailService.queryById(id);
+    }
+
+    @GetMapping("selectAll")
+    public List<BasBomDetail> selectAll() {
+        return basBomDetailService.queryAllByLimit(0,100000);
     }
 
 }

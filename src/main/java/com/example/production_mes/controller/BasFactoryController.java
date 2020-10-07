@@ -85,6 +85,7 @@ public class BasFactoryController {
         basFactory.setId(map.get("id"));
         basFactory.setFactoryname(map.get("factoryname"));
         basFactory.setFactorybuilddate(map.get("factorybuildDate"));
+        basFactory.setEnterpriseId(map.get("enterpriseid"));
         basFactory.setFactoryaddress(map.get("factoryaddress"));
         basFactory.setFactoryphone(map.get("factoryphone"));
         basFactory.setFactoryecode(map.get("factoryecode"));
@@ -102,7 +103,7 @@ public class BasFactoryController {
         BasFactory BasFactory = new BasFactory();
         BasFactory.setId(IDGenerator.generateIDByDateStr());
         System.out.println(BasFactory.getId());
-        BasFactory.setEnterpriseId(map.get("enterprise_id"));
+        BasFactory.setEnterpriseId(map.get("enterpriseid"));
         BasFactory.setFactoryname(map.get("factoryName"));
         BasFactory.setFactorybuilddate(map.get("factoryBuildDate"));
         BasFactory.setFactoryaddress(map.get("factoryAddress"));
