@@ -43,23 +43,25 @@ public class EquipReportController {
         Integer b1=0,b2=0,b3=0,b4=0,b5=0;
         Integer c1=0,c2=0,c3=0,c4=0,c5=0;
         for (EquipReport equipReport:list) {
-            if(equipReport.getSpec().equals("0001")&&equipReport.getType().equals("0001")){a1++;}
-            if(equipReport.getSpec().equals("0001")&&equipReport.getType().equals("0002")){a2++;}
-            if(equipReport.getSpec().equals("0001")&&equipReport.getType().equals("0003")){a3++;}
-            if(equipReport.getSpec().equals("0001")&&equipReport.getType().equals("0004")){a4++;}
-            if(equipReport.getSpec().equals("0001")&&equipReport.getType().equals("0005")){a5++;}
-
-            if(equipReport.getSpec().equals("0002")&&equipReport.getType().equals("0001")){b1++;}
-            if(equipReport.getSpec().equals("0002")&&equipReport.getType().equals("0002")){b2++;}
-            if(equipReport.getSpec().equals("0002")&&equipReport.getType().equals("0003")){b3++;}
-            if(equipReport.getSpec().equals("0002")&&equipReport.getType().equals("0004")){b4++;}
-            if(equipReport.getSpec().equals("0002")&&equipReport.getType().equals("0005")){b5++;}
-
-            if(equipReport.getSpec().equals("0003")&&equipReport.getType().equals("0001")){c1++;}
-            if(equipReport.getSpec().equals("0003")&&equipReport.getType().equals("0002")){c2++;}
-            if(equipReport.getSpec().equals("0003")&&equipReport.getType().equals("0003")){c3++;}
-            if(equipReport.getSpec().equals("0003")&&equipReport.getType().equals("0004")){c4++;}
-            if(equipReport.getSpec().equals("0003")&&equipReport.getType().equals("0005")){c5++;}
+            String specc = equipReport.getSpec();
+            String typee = equipReport.getType();
+            if(specc==null||typee==null)
+                continue;
+            if(specc=="0001"&&typee=="0001"){a1++;}
+            else if(specc.equals("0001")&&typee.equals("0002")){a2++;}
+            else if(specc.equals("0001")&&typee.equals("0003")){a3++;}
+            else if(specc.equals("0001")&&typee.equals("0004")){a4++;}
+            else if(specc.equals("0001")&&typee.equals("0005")){a5++;}
+            else if(specc.equals("0002")&&typee.equals("0001")){b1++;}
+            else if(specc.equals("0002")&&typee.equals("0002")){b2++;}
+            else if(specc.equals("0002")&&typee.equals("0003")){b3++;}
+            else if(specc.equals("0002")&&typee.equals("0004")){b4++;}
+            else if(specc.equals("0002")&&typee.equals("0005")){b5++;}
+            else if(specc.equals("0003")&&typee.equals("0001")){c1++;}
+            else if(specc.equals("0003")&&typee.equals("0002")){c2++;}
+            else if(specc.equals("0003")&&typee.equals("0003")){c3++;}
+            else if(specc.equals("0003")&&typee.equals("0004")){c4++;}
+            else if(specc.equals("0003")&&typee.equals("0005")){c5++;}
         }
         List<List<Integer>> result = new LinkedList<>();
         result.add(new LinkedList<>(Arrays.asList(a1, a2, a3, a4, a5)));
@@ -67,6 +69,8 @@ public class EquipReportController {
         result.add(new LinkedList<>(Arrays.asList(c1, c2, c3, c4, c5)));
         return result;
     }
+
+
 
 
     @GetMapping("ChartData2")
