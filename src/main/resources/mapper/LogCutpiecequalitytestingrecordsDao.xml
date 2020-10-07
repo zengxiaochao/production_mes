@@ -39,9 +39,10 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LogCutpiecequalitytestingrecordsMap">
         select
-        r.*,
+        cardId,
+        workCellId,
         ((count(qualified)-sum(qualified))/count(qualified)) as yield
-        from production_mes2.log_cutpiecequalitytestingrecords r
+        from production_mes2.log_cutpiecequalitytestingrecords
         <where>
             <choose>
                 <when test="startTime!=null and startTime!='' and endTime!=null and endTime!=''">
@@ -55,7 +56,7 @@
                 </when>
             </choose>
         </where>
---         group by cardId
+        group by cardId
     </select>
 
     <!--通过实体作为筛选条件查询-->

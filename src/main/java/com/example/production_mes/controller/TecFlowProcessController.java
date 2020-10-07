@@ -51,7 +51,6 @@ public class TecFlowProcessController {
     public List<TecFlowProcess>  selectAll() {
         return this.tecFlowProcessService.queryAllByLimit(0,1000);
     }
-
     /**
      * 通过工站名查询所有数据
      */
@@ -69,7 +68,6 @@ public class TecFlowProcessController {
         tecFlowProcessService.updateById(id);
         return Result.success("删除成功");
     }
-
     /**
      * 添加
      * @param map
