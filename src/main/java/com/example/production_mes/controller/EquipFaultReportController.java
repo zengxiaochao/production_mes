@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -37,6 +39,60 @@ public class EquipFaultReportController {
     public List<EquipFaultReport> selectAll() {
         return this.equipFaultReportService.queryAllByLimit(0,1000);
     }
+
+    /**
+     * 首页图表
+     * @return
+     */
+
+    @GetMapping("ChartData2")
+    public List<List<Integer>> ChartData2() {
+        List<EquipFaultReport> list = this.equipFaultReportService.queryAllByLimit(0,1000);
+        Integer a1=0,a2=0,a3=0,a4=0;
+        Integer b1=0,b2=0,b3=0,b4=0;
+        Integer c1=0,c2=0,c3=0,c4=0;
+        Integer d1=0,d2=0,d3=0,d4=0;
+        Integer e1=0,e2=0,e3=0,e4=0;
+        for (EquipFaultReport equipFaultReport:list) {
+            String EquipTypee = equipFaultReport.getEquipType();
+            String EquipLocc = equipFaultReport.getEquipLoc();
+            System.out.print(EquipTypee);
+            System.out.println(EquipLocc);
+            if(EquipTypee==null||EquipLocc==null)
+                continue;
+            if(EquipTypee.equals("0001")&&EquipLocc.equals("0001")){a1++;}
+            else if(EquipTypee.equals("0001")&&EquipLocc.equals("0002")){a2++;}
+            else if(EquipTypee.equals("0001")&&EquipLocc.equals("0003")){a3++;}
+            else if(EquipTypee.equals("0001")&&EquipLocc.equals("0004")){a4++;}
+            else if(EquipTypee.equals("0002")&&EquipLocc.equals("0001")){b1++;}
+            else if(EquipTypee.equals("0002")&&EquipLocc.equals("0002")){b2++;}
+            else if(EquipTypee.equals("0002")&&EquipLocc.equals("0003")){b3++;}
+            else if(EquipTypee.equals("0002")&&EquipLocc.equals("0004")){b4++;}
+            else if(EquipTypee.equals("0003")&&EquipLocc.equals("0001")){c1++;}
+            else if(EquipTypee.equals("0003")&&EquipLocc.equals("0002")){c2++;}
+            else if(EquipTypee.equals("0003")&&EquipLocc.equals("0003")){c3++;}
+            else if(EquipTypee.equals("0003")&&EquipLocc.equals("0004")){c4++;}
+            else if(EquipTypee.equals("0004")&&EquipLocc.equals("0001")){d1++;}
+            else if(EquipTypee.equals("0004")&&EquipLocc.equals("0002")){d2++;}
+            else if(EquipTypee.equals("0004")&&EquipLocc.equals("0003")){d3++;}
+            else if(EquipTypee.equals("0004")&&EquipLocc.equals("0004")){d4++;}
+            else if(EquipTypee.equals("0005")&&EquipLocc.equals("0001")){e1++;}
+            else if(EquipTypee.equals("0005")&&EquipLocc.equals("0002")){e2++;}
+            else if(EquipTypee.equals("0005")&&EquipLocc.equals("0003")){e3++;}
+            else if(EquipTypee.equals("0005")&&EquipLocc.equals("0004")){e4++;}
+
+        }
+        List<List<Integer>> result = new LinkedList<>();
+        result.add(new LinkedList<>(Arrays.asList(a1, a2, a3, a4)));
+        result.add(new LinkedList<>(Arrays.asList(b1, b2, b3, b4)));
+        result.add(new LinkedList<>(Arrays.asList(c1, c2, c3, c4)));
+        result.add(new LinkedList<>(Arrays.asList(d1, d2, d3, d4)));
+        result.add(new LinkedList<>(Arrays.asList(e1, e2, e3, e4)));
+        return result;
+    }
+
+
+
     /**
      * 条件查询2
      * @return
